@@ -17,10 +17,12 @@ class Warrior {
     var weaponDamage: Int = 1 //This is the damage of a weapon
     var healPoint: Int = 1  //This is how much the target hp can be heal by the warrior
     
-    init(positionInTeam: Int, type: WarriorType, name: String) {
+    init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, healPoint: Int) {
         self.positionInTeam = positionInTeam
         self.type = type
         self.name = name
+        self.weaponDamage = weaponDamage
+        self.healPoint = healPoint
     }
     
     func describeWarrior() {  //Describe the warrior with his position in the team and his name

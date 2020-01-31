@@ -65,9 +65,9 @@ class Player {  //There are 2 players and each player has 1 team
     
     private func askWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to player to choose his warrior's type
         print("Player \(id) please choose the type of your warrior N°\(positionInTeam) by entering a number."
-            + "\n1.Magus"
-            + "\n2.Knight"
-            + "\n3.Archer")
+            + "\n1.Magus (weapon damage: 5, heal point: 20)"
+            + "\n2.Knight (weapon damage: 20, heal point: 5)"
+            + "\n3.Archer (weapon damage: 12, heal point: 12)")
         guard let warriorTypeIndex = readLine() else {
             print("Please input a number.")
             return nil
@@ -136,11 +136,11 @@ class Player {  //There are 2 players and each player has 1 team
                                                                                                                            chosen type by the player*/
         switch type {
         case .magus:
-            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName)
+            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName, weaponDamage: 5, healPoint: 20)
         case .knight:
-            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName)
+            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName, weaponDamage: 20, healPoint: 5)
         case .archer:
-            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName)
+            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName, weaponDamage: 12, healPoint: 12)
         }
     }
     
@@ -158,10 +158,10 @@ class Player {  //There are 2 players and each player has 1 team
 //========================
     
     func askToChooseWarrior() -> Warrior? {  //Ask to the player to choose a warrior of his team
-        print("Player \(id) please choose the warrior who will attack an ennemy or heal one of you warrior by entering a number.")
-        var i = 0
-        for _ in warriors {
-            print("\n\(i + 1).\(warriors[i].name) (type: \(warriors[i].type), health point: \(warriors[i].hp), weapon damage: \(warriors[i].weaponDamage), heal point: \(warriors[i].healPoint))")
+        print("Player \(id) please choose the warrior who will attack an ennemy or heal a teammate by entering a number.")
+        var i = 1
+        for warrior in warriors {
+            print("\n\(i).\(warrior.name) (type: \(warrior.type), health point: \(warrior.hp), weapon damage: \(warrior.weaponDamage), heal point: \(warrior.healPoint))")
             i += 1
         }
         guard let chosenWarriorOptionalString = readLine() else {
@@ -179,6 +179,7 @@ class Player {  //There are 2 players and each player has 1 team
             return nil
         }
         let chosenWarrior = warriors[chosenWarriorIndex - 1]
+        print("\(chosenWarrior.name) is selected.\n")
         return chosenWarrior
     }
     
@@ -229,14 +230,14 @@ class Player {  //There are 2 players and each player has 1 team
     
     
     private func askToChooseEnemy(allWarriors: [Warrior]) -> Warrior? {  //Ask to choose an enemy
-        print("Player \(id) please choose the enemy who will be attacked")
+        print("Player \(id) please choose the enemy who will be attacked by entering a number.")
         var enemies: [Warrior] = []
         for warrior in allWarriors where !warriorsNames.contains(warrior.name){
             enemies.append(warrior)
         }
-        var i = 0
-        for _ in enemies {
-            print("\n\(i + 1).\(enemies[i].name) (type:\(enemies[i].type), health point:\(enemies[i].hp), weapon damage:\(enemies[i].weaponDamage), heal point:\(enemies[i].healPoint))")
+        var i = 1
+        for enemy in enemies {
+            print("\n\(i).\(enemy.name) (type: \(enemy.type), health point: \(enemy.hp), weapon damage: \(enemy.weaponDamage), heal point: \(enemy.healPoint))")
             i += 1
         }
         guard let chosenEnemyOptionalString = readLine() else {
@@ -275,7 +276,6 @@ class Player {  //There are 2 players and each player has 1 team
         case .heal:
             return loopAskToChooseWarrior()
         }
-        
     }
     
     
@@ -289,7 +289,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func action(type: ActionType, who: Warrior, target: Warrior) {  //The chose warrior attack an enemy or heal a teammate
+    private func action(type: ActionType, who: Warrior, target: Warrior) {  //The chosen warrior attack an enemy or heal a teammate
         switch type {
         case .attack:
             attack(who: who, target: target)
