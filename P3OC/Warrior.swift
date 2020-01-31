@@ -15,14 +15,14 @@ class Warrior {
     let name: String  //This is the warrior's name
     var hp: Int = 100 //This is the warrior's life
     var weaponDamage: Int = 1 //This is the damage of a weapon
-    var healPoint: Int = 1  //This is how much the target hp can be heal by the warrior
+    var magicPoints: Int = 1  //This is how much the target hp can be heal by the warrior
     
-    init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, healPoint: Int) {
+    init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, magicPoints: Int) {
         self.positionInTeam = positionInTeam
         self.type = type
         self.name = name
         self.weaponDamage = weaponDamage
-        self.healPoint = healPoint
+        self.magicPoints = magicPoints
     }
     
     func describeWarrior() {  //Describe the warrior with his position in the team and his name

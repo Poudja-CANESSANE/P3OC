@@ -109,16 +109,20 @@ class Player {  //There are 2 players and each player has 1 team
             return nil
         }
         
-        guard !warriorsNames.contains(warriorName) else {
+        let isNameAlreadyTaken = isNameAlreadyTakenBy(allWarriorsNames: allWarriorNames, name: warriorName)
+        
+        guard !isNameAlreadyTaken else {
             print("One of your warrior already have this name.")
             return nil
         }
         
-        guard !allWarriorNames.contains(warriorName) else {
-            print("Player 1 already used this name.")
-            return nil
-        }
         return warriorName
+    }
+    
+    private func isNameAlreadyTakenBy(allWarriorsNames: [String], name: String) -> Bool {
+        return allWarriorsNames.contains { (warriorName) -> Bool in
+            warriorName.lowercased() == name.lowercased()
+        }
     }
     
 
@@ -136,11 +140,11 @@ class Player {  //There are 2 players and each player has 1 team
                                                                                                                            chosen type by the player*/
         switch type {
         case .magus:
-            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName, weaponDamage: 5, healPoint: 20)
+            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName, weaponDamage: 5, magicPoints: 20)
         case .knight:
-            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName, weaponDamage: 20, healPoint: 5)
+            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName, weaponDamage: 20, magicPoints: 5)
         case .archer:
-            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName, weaponDamage: 12, healPoint: 12)
+            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName, weaponDamage: 12, magicPoints: 12)
         }
     }
     
@@ -161,7 +165,7 @@ class Player {  //There are 2 players and each player has 1 team
         print("Player \(id) please choose the warrior who will attack an ennemy or heal a teammate by entering a number.")
         var i = 1
         for warrior in warriors {
-            print("\n\(i).\(warrior.name) (type: \(warrior.type), health point: \(warrior.hp), weapon damage: \(warrior.weaponDamage), heal point: \(warrior.healPoint))")
+            print("\n\(i).\(warrior.name) (type: \(warrior.type), health point: \(warrior.hp), weapon damage: \(warrior.weaponDamage), heal point: \(warrior.magicPoints))")
             i += 1
         }
         guard let chosenWarriorOptionalString = readLine() else {
@@ -178,6 +182,7 @@ class Player {  //There are 2 players and each player has 1 team
             print("Make sure to enter a number between 1 and \(numberOfWarriorPerTeam).")
             return nil
         }
+        
         let chosenWarrior = warriors[chosenWarriorIndex - 1]
         print("\(chosenWarrior.name) is selected.\n")
         return chosenWarrior
@@ -237,7 +242,7 @@ class Player {  //There are 2 players and each player has 1 team
         }
         var i = 1
         for enemy in enemies {
-            print("\n\(i).\(enemy.name) (type: \(enemy.type), health point: \(enemy.hp), weapon damage: \(enemy.weaponDamage), heal point: \(enemy.healPoint))")
+            print("\n\(i).\(enemy.name) (type: \(enemy.type), health point: \(enemy.hp), weapon damage: \(enemy.weaponDamage), heal point: \(enemy.magicPoints))")
             i += 1
         }
         guard let chosenEnemyOptionalString = readLine() else {
@@ -285,7 +290,7 @@ class Player {  //There are 2 players and each player has 1 team
     
     
     private func heal(who: Warrior, target: Warrior) {  //Increase the hp of the target
-        target.hp += who.healPoint
+        target.hp += who.magicPoints
     }
     
     
