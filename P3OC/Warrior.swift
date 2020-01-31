@@ -13,6 +13,9 @@ class Warrior {
     let positionInTeam: Int  //To know which warrior is selected
     let type: WarriorType  //This is the warrior's type
     let name: String  //This is the warrior's name
+    var hp: Int = 100 //This is the warrior's life
+    var weaponDamage: Int = 1 //This is the damage of a weapon
+    var healPoint: Int = 1  //This is how much the target hp can be heal by the warrior
     
     init(positionInTeam: Int, type: WarriorType, name: String) {
         self.positionInTeam = positionInTeam
