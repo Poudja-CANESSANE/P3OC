@@ -36,14 +36,7 @@ class GameManager {
         return warriors
     }
     
-    private var allWarriorNames: [String] { //Contains all warrior's names
-        var names: [String] = []
-        
-        for player in players {
-            names.append(contentsOf: player.warriorsNames)
-        }
-        return names
-    }
+    static var allWarriorNames: [String] = [] //Contains all warrior's names
     
 
 //========================
@@ -71,7 +64,7 @@ class GameManager {
     
     private func startTeamCreationPhase() {  //Initialization phase, create a team for each players
         for player in players {
-            player.createWarriors(allWarriorNames: allWarriorNames)
+            player.createWarriors()
         }
     }
     
@@ -80,7 +73,7 @@ class GameManager {
             for player in players {
                 player.fight(allWarriors: allWarriors)
             }
-        } while !((warriors1[0].hp <= 0 && warriors1[1].hp <= 0 && warriors1[2].hp <= 0) || (warriors2[0].hp <= 0 && warriors2[1].hp <= 0 && warriors2[2].hp <= 0))
+        } while !((!warriors1[0].isAlive && !warriors1[1].isAlive && !warriors1[2].isAlive) || (!warriors2[0].isAlive && !warriors2[1].isAlive && !warriors2[2].isAlive))
 
     }
     

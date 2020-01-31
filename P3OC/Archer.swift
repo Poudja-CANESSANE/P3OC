@@ -9,5 +9,7 @@
 import Foundation
 
 class Archer: Warrior {
-
+    init(positionInTeam: Int, type: WarriorType, name: String) {
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: 50, magicPoints: 12)
+    }
 }

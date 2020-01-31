@@ -13,9 +13,21 @@ class Warrior {
     let positionInTeam: Int  //To know which warrior is selected
     let type: WarriorType  //This is the warrior's type
     let name: String  //This is the warrior's name
-    var hp: Int = 100 //This is the warrior's life
+    var hp: Int = 100 {  //This is the warrior's life
+        didSet {
+            if hp > maxHp {
+                hp = maxHp
+            } else if !isAlive {
+                hp = 0
+            }
+        }
+    }
+    let maxHp: Int = 100
     var weaponDamage: Int = 1 //This is the damage of a weapon
     var magicPoints: Int = 1  //This is how much the target hp can be heal by the warrior
+    var isAlive: Bool {
+        return hp > 0
+    }
     
     init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, magicPoints: Int) {
         self.positionInTeam = positionInTeam
