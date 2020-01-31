@@ -8,5 +8,11 @@
 
 import Foundation
 
-print("Hello, World!")
+// Mettre le jeu en place (GameManager!!!)
+// en demandant à chaque (boucle for) joueur (Player!!!) de créer les guerriers (Warrior!!!) (player.createWarriors())
+// de son équipe (numberOfWarriorPerTeam = 3, var warriors: [Warrior] = []).
+// (createWarrior()) Le joueur devra choisir pour chaque personnage un nom différent de tous les autres personnages déjà créés dans le jeu (askWarriorName(existingWarriors: [Warrior]).
 
+
+let gameManager = GameManager()
+gameManager.startGame()
