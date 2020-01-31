@@ -34,9 +34,9 @@ class Player {  //There are 2 players and each player has 1 team
     
     private func createWarrior(positionInTeam: Int, allWarriorNames: [String]) {  //Create 1 warrior with his position in the team
         
-        let warriorType = loopAskWarriorType(id: id, positionInTeam: positionInTeam)
+        let warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
         
-        let warriorName = loopAskWarriorName(id: id, positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
+        let warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
 
         let warrior = createWarriorAccordingToType(type: warriorType, positionInTeam: positionInTeam, warriorName: warriorName)
         warriors.append(warrior)
@@ -44,7 +44,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func askWarriorType(id: Int, positionInTeam: Int) -> WarriorType? {
+    private func askWarriorType(positionInTeam: Int) -> WarriorType? {
         print("Player \(id) please choose the type of your warrior N°\(positionInTeam) by entering a number."
             + "\n1.Magus"
             + "\n2.Knight"
@@ -55,7 +55,7 @@ class Player {  //There are 2 players and each player has 1 team
         }
         
         guard let indexInt = Int(warriorTypeIndex) else {
-            print("The input number is invalid. Make sure to enter a number between 1 and \(numberOfType).")
+            print("The input is invalid. Make sure to enter a number between 1 and \(numberOfType).")
             return nil
         }
         
@@ -70,17 +70,17 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func loopAskWarriorType(id: Int, positionInTeam: Int) -> WarriorType {
+    private func loopAskWarriorType(positionInTeam: Int) -> WarriorType {
         var warriorType: WarriorType?
         
         repeat {
-            warriorType = askWarriorType(id: id, positionInTeam: positionInTeam)
+            warriorType = askWarriorType(positionInTeam: positionInTeam)
         } while warriorType == nil
         return warriorType!
     }
     
     
-    private func askWarriorName(id: Int, positionInTeam: Int, allWarriorNames: [String]) -> String? {   /* Ask to the user to enter the name                                                                                                             of his warrior at a particular position in the team */
+    private func askWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String? {   /* Ask to the user to enter the name                                                                                                             of his warrior at a particular position in the team */
         print("Player \(id) please enter the name for your warrior N°\(positionInTeam).")
         guard let warriorName = readLine() else {
             print("The input name of warrior N°\(positionInTeam) is invalid. It is nil.")
@@ -93,23 +93,23 @@ class Player {  //There are 2 players and each player has 1 team
         }
         
         guard !warriorsNames.contains(warriorName) else {
-            print("You already used this name")
+            print("One of your warrior already have this name.")
             return nil
         }
         
         guard !allWarriorNames.contains(warriorName) else {
-            print("This name already exists.")
+            print("Player 1 already used this name.")
             return nil
         }
         return warriorName
     }
     
 
-    private func loopAskWarriorName(id: Int, positionInTeam: Int, allWarriorNames: [String]) -> String {  //Ask the name of each warrior per player
+    private func loopAskWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String {  //Ask the name of each warrior per player
         var warriorName: String?
         
         repeat {
-            warriorName = askWarriorName(id: id, positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
+            warriorName = askWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
         } while warriorName == nil
         return warriorName!
     }
