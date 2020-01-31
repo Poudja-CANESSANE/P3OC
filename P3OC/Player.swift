@@ -92,6 +92,11 @@ class Player {  //There are 2 players and each player has 1 team
             return nil
         }
         
+        guard !warriorsNames.contains(warriorName) else {
+            print("You already used this name")
+            return nil
+        }
+        
         guard !allWarriorNames.contains(warriorName) else {
             print("This name already exists.")
             return nil
@@ -113,11 +118,11 @@ class Player {  //There are 2 players and each player has 1 team
     private func createWarriorAccordingToType(type: WarriorType, positionInTeam: Int, warriorName: String) -> Warrior {
         switch type {
         case .magus:
-            return Magus(magusPositionInTeam: positionInTeam, magusName: warriorName)
+            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName)
         case .knight:
-            return Knight(knightPositionInTeam: positionInTeam, knightName: warriorName)
+            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName)
         case .archer:
-            return Archer(archerPositionInTeam: positionInTeam, archerName: warriorName)
+            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName)
         }
     }
     

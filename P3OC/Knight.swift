@@ -9,13 +9,5 @@
 import Foundation
 
 class Knight: Warrior {
-    var knightPositionInTeam: Int
-    var knightName: String
-
-    init(knightPositionInTeam: Int, knightName: String) {
-        self.knightPositionInTeam = knightPositionInTeam
-        self.knightName = knightName
-        super.init(positionInTeam: knightPositionInTeam, type: .knight, name: knightName)
-    }
 
 }

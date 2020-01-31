@@ -10,7 +10,6 @@ import Foundation
 
 class GameManager {
     let numberOfPlayer = 2  //There are 2 players
-    
     private var players: [Player] = []  //Contains players of the game
     
     private var allWarriorNames: [String] { //Contains all warrior's names
@@ -19,7 +18,6 @@ class GameManager {
         for player in players {
             names.append(contentsOf: player.warriorsNames)
         }
-        
         return names
     }
     

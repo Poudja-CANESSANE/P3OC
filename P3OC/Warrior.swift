@@ -11,7 +11,7 @@ import Foundation
 class Warrior {
     
     let positionInTeam: Int  //To know which warrior is selected
-    var type: WarriorType  //This is the warrior's type
+    let type: WarriorType  //This is the warrior's type
     let name: String  //This is the warrior's name
     
     init(positionInTeam: Int, type: WarriorType, name: String) {
