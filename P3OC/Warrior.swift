@@ -9,30 +9,18 @@
 import Foundation
 
 class Warrior {
-
+    
     let positionInTeam: Int  //To know which warrior is selected
-//    var type: String
+    var type: WarriorType  //This is the warrior's type
     let name: String  //This is the warrior's name
     
-    init(positionInTeam: Int, name: String) {
+    init(positionInTeam: Int, type: WarriorType, name: String) {
         self.positionInTeam = positionInTeam
-//        self.type = type
+        self.type = type
         self.name = name
     }
-
-//        switch type {
-//        case "magus":
-//            Magus(magusPositionInTeam: positionInTeam, magusName: name)
-//        case "knight":
-//            Knight(knightPositionInTeam: positionInTeam, knightName: name)
-//        case "archer":
-//            Archer(archerPositionInTeam: positionInTeam, archerName: name)
-//        default:
-//            print("Error type")
-//        }
-//    }
     
     func describeWarrior() {  //Describe the warrior with his position in the team and his name
-        print("Your warrior N°\(positionInTeam) name is \(name).")
+        print("Your warrior N°\(positionInTeam) is a \(type) and his name is \(name).")
     }
 }

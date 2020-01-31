@@ -14,6 +14,7 @@
 		ACD6223123E4BB4F004E723A /* Magus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223023E4BB4F004E723A /* Magus.swift */; };
 		ACD6223323E4BB65004E723A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223223E4BB65004E723A /* Player.swift */; };
 		ACD6223523E4BB81004E723A /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223423E4BB81004E723A /* Warrior.swift */; };
+		ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223623E4BC7E004E723A /* WarriorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		ACD6223023E4BB4F004E723A /* Magus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magus.swift; sourceTree = "<group>"; };
 		ACD6223223E4BB65004E723A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		ACD6223423E4BB81004E723A /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
+		ACD6223623E4BC7E004E723A /* WarriorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarriorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				ACD6222C23E4BB32004E723A /* GameManager.swift */,
 				ACD6223223E4BB65004E723A /* Player.swift */,
 				ACD6223423E4BB81004E723A /* Warrior.swift */,
+				ACD6223623E4BC7E004E723A /* WarriorType.swift */,
 				ACD6223023E4BB4F004E723A /* Magus.swift */,
 				ACD6222E23E4BB41004E723A /* Knight.swift */,
 				ACD6222A23E4BB1A004E723A /* Archer.swift */,
@@ -142,6 +145,7 @@
 				ACD6222F23E4BB41004E723A /* Knight.swift in Sources */,
 				ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */,
 				ACD6223123E4BB4F004E723A /* Magus.swift in Sources */,
+				ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */,
 				ACD6222D23E4BB32004E723A /* GameManager.swift in Sources */,
 				ACD6223323E4BB65004E723A /* Player.swift in Sources */,
 				ACD6222423E4BAFF004E723A /* main.swift in Sources */,

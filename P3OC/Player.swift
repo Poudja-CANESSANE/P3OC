@@ -18,36 +18,34 @@ public class Player {  //There are 2 players and each player has 1 team
     init(id: Int) {
         self.id = id
     }
-
+    
     func createWarriors() {  //Create a team for each players
         for warriorIndex in 1...numberOfWarriorPerTeam {
             createWarrior(positionInTeam: warriorIndex)
         }
         describeTeam()
     }
-
+    
     private func createWarrior(positionInTeam: Int) {  //Create 1 warrior with his position in the team
         
-//        guard let warriorType = askWarriorType(positionInTeam: positionInTeam) else {
-//            print("Your warrior type is empty")
-//            return
-//        }
+        guard let warriorType = askWarriorType(positionInTeam: positionInTeam) else { return }
+        
         let warriorName = loopAskWarriorName(id: id)
-
-        let warrior = Warrior(positionInTeam: positionInTeam, name: warriorName)
+        
+        let warrior = Warrior(positionInTeam: positionInTeam, type: warriorType, name: warriorName)
         warriors.append(warrior)
-
+        
 
     }
-
-//    private func askWarriorType(positionInTeam: Int) -> String? {
-//        print("Player \(id) please enter the type of your warrior N°\(positionInTeam).")
-//        guard let warriorType = readLine() else {
-//            print("The input type is invalid. Make sure to write exactly how the type is printed.")
-//            return nil
-//        }
-//        return warriorType
-//    }
+    
+    private func askWarriorType(positionInTeam: Int) -> WarriorType? {
+        print("Player \(id) please enter the type of your warrior N°\(positionInTeam).")
+        guard let warriorType = readLine() else {
+            print("The input type is invalid. Make sure to write exactly how the type is printed.")
+            return nil
+        }
+        return WarriorType(rawValue: warriorType)
+    }
     
     private func askWarriorName(positionInTeam: Int) -> String? {   /* Ask to the user to enter the name                                                                                                             of his warrior at a particular position in the team */
         print("Player \(id) please enter the name for your warrior N°\(positionInTeam).")
@@ -55,12 +53,12 @@ public class Player {  //There are 2 players and each player has 1 team
             print("The input name of warrior N°\(positionInTeam) is invalid. It is nil.")
             return nil
         }
-
+        
         guard warriorName != "" else {
             print("The name of warrior N°\(positionInTeam) is empty.")
             return nil
         }
-
+        
         guard !warriorsNames.contains(warriorName) else {
             print("This name already exists.")
             return nil
@@ -68,7 +66,7 @@ public class Player {  //There are 2 players and each player has 1 team
         warriorsNames.append(warriorName)
         return warriorName
     }
-
+    
     private func describeTeam() {  //Describe the team of a player with the warrior's position in the team and the warrior's name
         print("Here is the team of player \(id):")
         for warrior in warriors {
@@ -87,5 +85,4 @@ public class Player {  //There are 2 players and each player has 1 team
         }
         return warriorName
     }
-
 }
