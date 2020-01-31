@@ -21,6 +21,6 @@ class Warrior {
     }
     
     func describeWarrior() {  //Describe the warrior with his position in the team and his name
-        print("Your warrior N°\(positionInTeam) is a \(type) and his name is \(name).")
+        print("Your warrior N°\(positionInTeam) is of type \(type) and his name is \(name).")
     }
 }

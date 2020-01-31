@@ -8,12 +8,13 @@
 
 import Foundation
 
-//class Magus: Warrior {
-//    var magusPositionInTeam: Int
-//    var magusName: String
-//
-//    init(magusPositionInTeam: Int, magusName: String) {
-//        self.magusPositionInTeam = magusPositionInTeam
-//        self.magusName = magusName
-//    }
-//}
+class Magus: Warrior {
+    var magusPositionInTeam: Int
+    var magusName: String
+
+    init(magusPositionInTeam: Int, magusName: String) {
+        self.magusPositionInTeam = magusPositionInTeam
+        self.magusName = magusName
+        super.init(positionInTeam: magusPositionInTeam, type: .magus, name: magusName)
+    }
+}

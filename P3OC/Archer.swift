@@ -8,13 +8,15 @@
 
 import Foundation
 
-//class Archer: Warrior {
-//    var archerPositionInTeam: Int
-//    var archerName: String
-//
-//    init(archerPositionInTeam: Int, archerName: String) {
-//        self.archerPositionInTeam = archerPositionInTeam
-//        self.archerName = archerName
-//    }
-//
-//}
+class Archer: Warrior {
+    var archerPositionInTeam: Int
+    var archerName: String
+
+    init(archerPositionInTeam: Int, archerName: String) {
+        self.archerPositionInTeam = archerPositionInTeam
+        self.archerName = archerName
+        super.init(positionInTeam: archerPositionInTeam, type: .archer, name: archerName)
+    }
+
+
+}
