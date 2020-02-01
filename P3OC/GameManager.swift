@@ -73,8 +73,20 @@ class GameManager {
             for player in players {
                 player.fight(allWarriors: allWarriors)
             }
-        } while !((!warriors1[0].isAlive && !warriors1[1].isAlive && !warriors1[2].isAlive) || (!warriors2[0].isAlive && !warriors2[1].isAlive && !warriors2[2].isAlive))
-
+        } while !((warriors1[0].hp == 0 && warriors1[1].hp == 0 && warriors1[2].hp == 0) || (warriors2[0].hp == 0 && warriors2[1].hp == 0 && warriors2[2].hp == 0))
+//        if warriors1[0].hp == 0 && warriors1[1].hp == 0 && warriors1[2].hp == 0 {
+//            print("🎉🥇 Player 2 is the WINNER !!! 🥇🎉")
+//        } else if warriors2[0].hp == 0 && warriors2[1].hp == 0 && warriors2[2].hp == 0 {
+//            print("🎉🥇 Player 1 is the WINNER !!! 🥇🎉")
+//        }
+            
+            
+//            while !players[0].isLooser || !players[1].isLooser
+//        if players[0].isLooser {
+//            print("Player 2 is the WINNER !!!")
+//        } else if players[1].isLooser {
+//            print("Player 1 is the WINNER !!!")
+//        }
     }
     
     private func handleEndGame() {  //Ending phase

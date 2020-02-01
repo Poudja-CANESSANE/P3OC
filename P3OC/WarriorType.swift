@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum WarriorType: CaseIterable {
-    case magus, knight, archer
+enum WarriorType: String, CaseIterable {
+    case magus = "🎩", knight = "⚔️", archer = "🏹"
 }

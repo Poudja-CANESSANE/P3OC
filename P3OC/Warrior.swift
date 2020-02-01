@@ -26,7 +26,11 @@ class Warrior {
     var weaponDamage: Int = 1 //This is the damage of a weapon
     var magicPoints: Int = 1  //This is how much the target hp can be heal by the warrior
     var isAlive: Bool {
-        return hp > 0
+        if hp > 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, magicPoints: Int) {
@@ -38,6 +42,6 @@ class Warrior {
     }
     
     func describeWarrior() {  //Describe the warrior with his position in the team and his name
-        print("Your warrior N°\(positionInTeam) is of type \(type) and his name is \(name).")
+        print("Your warrior 🏋️ N°\(positionInTeam) is of type \(type.rawValue) \(type) and his name is \(name).")
     }
 }
