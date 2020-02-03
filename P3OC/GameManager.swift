@@ -15,18 +15,6 @@ class GameManager {
     let numberOfPlayer = 2  //There are 2 players
     private var players: [Player] = []  //Contains players of the game
     
-    var warriors1: [Warrior] {  //Contains player1's team
-        var warriors: [Warrior] = []
-        warriors.append(contentsOf: players[0].warriors)
-        return warriors
-    }
-
-    var warriors2: [Warrior] {  //Contains player2's team
-        var warriors: [Warrior] = []
-        warriors.append(contentsOf: players[1].warriors)
-        return warriors
-    }
-    
     private var allWarriors: [Warrior] {  //Contains players' team
         var warriors: [Warrior] = []
         
@@ -38,7 +26,8 @@ class GameManager {
     
     static var allWarriorNames: [String] = [] //Contains all warrior's names
     
-
+    var numberOfRound: Int = 0  //This is the number of round
+    
 //========================
 // MARK: - Internal method
 //========================
@@ -49,7 +38,6 @@ class GameManager {
         startFightingPhase()
         handleEndGame()
     }
-    
     
 //========================
 // MARK: - Private methods
@@ -69,27 +57,31 @@ class GameManager {
     }
     
     private func startFightingPhase() {  //Fighting phase
-        repeat {
+        while !(players[0].isLooser || players[1].isLooser) {
             for player in players {
-                player.fight(allWarriors: allWarriors)
+                if !(players[0].isLooser || players[1].isLooser) {
+                    player.fight(allWarriors: allWarriors)
+                    numberOfRound += 1
+                } else {
+                    return
+                }
             }
-        } while !((warriors1[0].hp == 0 && warriors1[1].hp == 0 && warriors1[2].hp == 0) || (warriors2[0].hp == 0 && warriors2[1].hp == 0 && warriors2[2].hp == 0))
-//        if warriors1[0].hp == 0 && warriors1[1].hp == 0 && warriors1[2].hp == 0 {
-//            print("🎉🥇 Player 2 is the WINNER !!! 🥇🎉")
-//        } else if warriors2[0].hp == 0 && warriors2[1].hp == 0 && warriors2[2].hp == 0 {
-//            print("🎉🥇 Player 1 is the WINNER !!! 🥇🎉")
-//        }
-            
-            
-//            while !players[0].isLooser || !players[1].isLooser
-//        if players[0].isLooser {
-//            print("Player 2 is the WINNER !!!")
-//        } else if players[1].isLooser {
-//            print("Player 1 is the WINNER !!!")
-//        }
+        }
     }
     
-    private func handleEndGame() {  //Ending phase
-        
+    
+    private func handleEndGame() {  //Ending phase: print winner, number of round, print players' team
+        print("\n                              *****END*****")
+        if players[0].isLooser {
+            print("\n🎉🥇 Player 2 is the WINNER !!! 🥇🎉")
+        } else if players[1].isLooser {
+            print("\n🎉🥇 Player 1 is the WINNER !!! 🥇🎉")
+        }
+        print("\n                           *****STATISTICS*****")
+        print("\nNumber of round: \(numberOfRound)")
+        for player in players {
+            print("\nHere is the team of player \(player.id):")
+            player.describeTeamEndGame()
+        }
     }
 }

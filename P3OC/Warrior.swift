@@ -26,11 +26,7 @@ class Warrior {
     var weaponDamage: Int = 1 //This is the damage of a weapon
     var magicPoints: Int = 1  //This is how much the target hp can be heal by the warrior
     var isAlive: Bool {
-        if hp > 0 {
-            return true
-        } else {
-            return false
-        }
+        return hp > 0 
     }
     
     init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, magicPoints: Int) {
