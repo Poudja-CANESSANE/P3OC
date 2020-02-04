@@ -33,11 +33,17 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Internal methods
 //=========================
     
-    func createWarriors() {  //Create the player's team
+    func createWarriors(wantToRestart: Bool) -> Bool {  //Create the player's team
+        var wantToRestartCreateWarrior: Bool = wantToRestart
+        if wantToRestart == true {
+            GameManager.allWarriorNames = []
+            wantToRestartCreateWarrior = false
+        }
         for warriorIndex in 1...numberOfWarriorPerTeam {
             createWarrior(positionInTeam: warriorIndex)
         }
         describeTeam()
+        return wantToRestartCreateWarrior
     }
     
     

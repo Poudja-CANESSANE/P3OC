@@ -27,6 +27,7 @@ class GameManager {
     static var allWarriorNames: [String] = [] //Contains all warrior's names
     
     var numberOfRound: Int = 0  //This is the number of round
+    var wantToRestart: Bool? = false
     
 //========================
 // MARK: - Internal method
@@ -52,7 +53,7 @@ class GameManager {
     
     private func startTeamCreationPhase() {  //Initialization phase, create a team for each players
         for player in players {
-            player.createWarriors()
+            wantToRestart = player.createWarriors(wantToRestart: wantToRestart!)
         }
     }
     
@@ -62,8 +63,6 @@ class GameManager {
                 if !(players[0].isLooser || players[1].isLooser) {
                     player.fight(allWarriors: allWarriors)
                     numberOfRound += 1
-                } else {
-                    return
                 }
             }
         }
@@ -83,5 +82,50 @@ class GameManager {
             print("\nHere is the team of player \(player.id):")
             player.describeTeamEndGame()
         }
+        print("\n")
+        wantToRestart = loopAskToRestartGame()
+        if wantToRestart == true {
+            startGame()
+        }
+    }
+    
+    
+    private func askToRestartGame() -> Bool? {
+        print("\nDo you want to play again ?"
+            + "\n1. YES"
+            + "\n2. NO")
+        
+        guard let restartOptionalString = readLine() else {
+            print("⚠️ The input is invalid. ⚠️")
+            return nil
+        }
+        
+        guard let restartIndex = Int(restartOptionalString) else {
+            print("⚠️ Please enter a number. ⚠️")
+            return nil
+        }
+        
+        guard restartIndex == 1 || restartIndex == 2 else {
+            print("⚠️ Make sure to enter 1 or 2. ⚠️")
+            return nil
+        }
+        
+        if restartIndex == 1 {
+            wantToRestart = true
+            players = []
+            startGame()
+        } else if restartIndex == 2 {
+            wantToRestart = false
+        }
+        return wantToRestart
+    }
+    
+    
+    private func loopAskToRestartGame() -> Bool {
+        wantToRestart = nil
+        while wantToRestart == nil  {
+            wantToRestart = askToRestartGame()
+        }
+        return wantToRestart!
     }
 }
