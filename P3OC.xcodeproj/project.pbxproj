@@ -10,6 +10,7 @@
 		AC360E6323EA1F8E00F5F527 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6223EA1F8E00F5F527 /* Health.swift */; };
 		AC360E6523EA1F9800F5F527 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6423EA1F9800F5F527 /* Settings.swift */; };
 		AC360E6723EA2BE900F5F527 /* WarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6623EA2BE900F5F527 /* WarningMessage.swift */; };
+		AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E805A23EB61F200A18264 /* Weapon.swift */; };
 		ACD6222423E4BAFF004E723A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222323E4BAFF004E723A /* main.swift */; };
 		ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222A23E4BB1A004E723A /* Archer.swift */; };
 		ACD6222D23E4BB32004E723A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222C23E4BB32004E723A /* GameManager.swift */; };
@@ -37,6 +38,7 @@
 		AC360E6223EA1F8E00F5F527 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		AC360E6423EA1F9800F5F527 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AC360E6623EA2BE900F5F527 /* WarningMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessage.swift; sourceTree = "<group>"; };
+		AC6E805A23EB61F200A18264 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		ACD6222023E4BAFF004E723A /* P3OC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = P3OC; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD6222323E4BAFF004E723A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		ACD6222A23E4BB1A004E723A /* Archer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		AC360E6923EB1DCC00F5F527 /* Weapon */ = {
 			isa = PBXGroup;
 			children = (
+				AC6E805A23EB61F200A18264 /* Weapon.swift */,
 			);
 			path = Weapon;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				ACD6222F23E4BB41004E723A /* Knight.swift in Sources */,
 				AC360E6723EA2BE900F5F527 /* WarningMessage.swift in Sources */,
 				ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */,
+				AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */,
 				AC360E6323EA1F8E00F5F527 /* Health.swift in Sources */,
 				ACD6223123E4BB4F004E723A /* Magus.swift in Sources */,
 				ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */,

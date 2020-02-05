@@ -118,9 +118,9 @@ class Player {  //There are 2 players and each player has 1 team
     
     private func askWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to player to choose his warrior's type
         print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number."
-            + "\n1.🎩 Magus (weapon damage: 10, heal point: 30)"
-            + "\n2.⚔️ Knight (weapon damage: 30, heal point: 10)"
-            + "\n3.🏹 Archer (weapon damage: 20, heal point: 20)")
+            + "\n1.🎩 Magus (weapon damage: \(Weapon.stone.damage), heal point: 30)"
+            + "\n2.⚔️ Knight (weapon damage: \(Weapon.sword.damage), heal point: 10)"
+            + "\n3.🏹 Archer (weapon damage: \(Weapon.bow.damage), heal point: 20)")
         
         guard let warriorTypeOptionalString = readLine() else {
             printWarning(msg: "Please input a number.")

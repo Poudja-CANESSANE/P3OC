@@ -10,6 +10,6 @@ import Foundation
 
 class Knight: Warrior {
     init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: 30, magicPoints: 10)
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: Weapon.sword.damage, magicPoints: 10)
     }
 }
