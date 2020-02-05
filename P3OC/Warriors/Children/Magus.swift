@@ -1,5 +1,5 @@
 //
-//  Knight.swift
+//  Magus.swift
 //  P3OC
 //
 //  Created by Canessane Poudja on 31/01/2020.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Knight: Warrior {
+class Magus: Warrior {
     init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: 50, magicPoints: 5)
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: 10, magicPoints: 30)
     }
 }
