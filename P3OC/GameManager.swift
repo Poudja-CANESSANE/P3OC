@@ -12,26 +12,17 @@ class GameManager {
 //===================
 // MARK: - Properties
 //===================
-    let numberOfPlayer = 2  //There are 2 players
-    private var players: [Player] = []  //Contains players of the game
     
-    private var allWarriors: [Warrior] {  //Contains players' team
-        var warriors: [Warrior] = []
-        
-        for player in players {
-            warriors.append(contentsOf: player.warriors)
-        }
-        return warriors
+    let numberOfPlayer = 2
+    private var players: [Player] = []  //Contains players of the game
+    var numberOfRound: Int = 0  //This is the number of round
+    private var isGameOver: Bool {
+        players[0].isLooser || players[1].isLooser
     }
     
-    static var allWarriorNames: [String] = [] //Contains all warrior's names
-    
-    var numberOfRound: Int = 0  //This is the number of round
-    var wantToRestart: Bool? = false
-    
-//========================
-// MARK: - Internal method
-//========================
+//===========================
+// MARK: - METHODS - INTERNAL
+//===========================
     
     func startGame() {  //Manage each phase of the game
         createPlayers()
@@ -40,9 +31,13 @@ class GameManager {
         handleEndGame()
     }
     
-//========================
-// MARK: - Private methods
-//========================
+//==========================
+// MARK: - METHODS - PRIVATE
+//==========================
+    
+//=============================
+// MARK: - Initialization Phase
+//=============================
     
     private func createPlayers() {  //Initialization phase, create 2 players
         for playerId in 1...numberOfPlayer {
@@ -53,21 +48,36 @@ class GameManager {
     
     private func startTeamCreationPhase() {  //Initialization phase, create a team for each players
         for player in players {
-            wantToRestart = player.createWarriors(wantToRestart: wantToRestart!)
+            player.createWarriors(allPlayers: players)
         }
     }
     
+//=======================
+// MARK: - Fighting Phase
+//=======================
+    
     private func startFightingPhase() {  //Fighting phase
-        while !(players[0].isLooser || players[1].isLooser) {
+        while !isGameOver {
             for player in players {
-                if !(players[0].isLooser || players[1].isLooser) {
-                    player.fight(allWarriors: allWarriors)
+                if !isGameOver {
+                    guard let opponentPlayer = getOpponentPlayerFrom(currentPlayer: player) else { return }
+                    player.fight(opponent: opponentPlayer)
                     numberOfRound += 1
                 }
             }
         }
     }
     
+    private func getOpponentPlayerFrom(currentPlayer: Player) -> Player? {
+        for player in players where player.id != currentPlayer.id  {
+            return player
+        }
+        return nil
+    }
+    
+//=====================
+// MARK: - Ending Phase
+//=====================
     
     private func handleEndGame() {  //Ending phase: print winner, number of round, print players' team
         print("\n                              *****END*****")
@@ -83,10 +93,16 @@ class GameManager {
             player.describeTeamEndGame()
         }
         print("\n")
-        wantToRestart = loopAskToRestartGame()
+        let wantToRestart = loopAskToRestartGame()
         if wantToRestart == true {
+            resetGame()
             startGame()
         }
+    }
+    
+    private func resetGame() {
+        players.removeAll()
+        numberOfRound = 0
     }
     
     
@@ -96,33 +112,30 @@ class GameManager {
             + "\n2. NO")
         
         guard let restartOptionalString = readLine() else {
-            print("⚠️ The input is invalid. ⚠️")
+            printWarning(msg: "The input is invalid")
             return nil
         }
         
         guard let restartIndex = Int(restartOptionalString) else {
-            print("⚠️ Please enter a number. ⚠️")
+            printWarning(msg: "Please enter a number.")
             return nil
         }
         
         guard restartIndex == 1 || restartIndex == 2 else {
-            print("⚠️ Make sure to enter 1 or 2. ⚠️")
+            printWarning(msg: "Make sure to enter 1 or 2.")
             return nil
         }
         
-        if restartIndex == 1 {
-            wantToRestart = true
-            players = []
-            startGame()
-        } else if restartIndex == 2 {
-            wantToRestart = false
+        switch restartIndex {
+        case 1: return true
+        case 2: return false
+        default: return false
         }
-        return wantToRestart
     }
     
     
     private func loopAskToRestartGame() -> Bool {
-        wantToRestart = nil
+        var wantToRestart: Bool? = nil
         while wantToRestart == nil  {
             wantToRestart = askToRestartGame()
         }
