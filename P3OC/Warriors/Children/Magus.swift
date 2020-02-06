@@ -9,7 +9,10 @@
 import Foundation
 
 class Magus: Warrior {
-    init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weaponDamage: Weapon.stone.damage, magicPoints: 30)
+    
+    let magusWeapons: [Weapon] = [.dummyGun, .lightStone, .stone, .heavyStone, .bazooka]
+    
+    init(positionInTeam: Int, type: WarriorType, name: String, weapon: Weapon) {
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weapons: magusWeapons, weapon: .stone, magicPoints: 30)
     }
 }

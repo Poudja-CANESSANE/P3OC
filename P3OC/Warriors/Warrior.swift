@@ -26,19 +26,20 @@ class Warrior {
             }
         }
     }
-    let maxHp: Int = 100
-    var weaponDamage: Int = 1 //This is the damage of a weapon
+    let maxHp: Int = 100  //The warrior's life cannot exceed maxHp
+    var weapon: Weapon  //This is the warrior's weapon
     var magicPoints: Int = 1  //This is how much the target hp can be heal by the warrior
-    var isAlive: Bool { hp > 0 }
-
+    var isAlive: Bool { hp > 0 }  //To know if the warrior is alive
+    let weapons: [Weapon]  //This array contains all the weapons that the warrior can use
 //============
 // MARK: - Inits
 //============
-    init(positionInTeam: Int, type: WarriorType, name: String, weaponDamage: Int, magicPoints: Int) {
+    init(positionInTeam: Int, type: WarriorType, name: String, weapons: [Weapon], weapon: Weapon, magicPoints: Int) {
         self.positionInTeam = positionInTeam
         self.type = type
         self.name = name
-        self.weaponDamage = weaponDamage
+        self.weapons = weapons
+        self.weapon = weapon
         self.magicPoints = magicPoints
     }
 

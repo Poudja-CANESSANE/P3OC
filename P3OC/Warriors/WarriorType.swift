@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum WarriorType: String, CaseIterable {
+enum WarriorType: CaseIterable {
     case magus, knight, archer
     
     var description: String {
