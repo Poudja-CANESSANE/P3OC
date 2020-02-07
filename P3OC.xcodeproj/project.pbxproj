@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC360E6323EA1F8E00F5F527 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6223EA1F8E00F5F527 /* Health.swift */; };
-		AC360E6523EA1F9800F5F527 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6423EA1F9800F5F527 /* Settings.swift */; };
 		AC360E6723EA2BE900F5F527 /* WarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6623EA2BE900F5F527 /* WarningMessage.swift */; };
 		AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E805A23EB61F200A18264 /* Weapon.swift */; };
 		AC9ADA9E23EC7018001E65E1 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADA9D23EC7018001E65E1 /* Chest.swift */; };
@@ -36,8 +34,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AC360E6223EA1F8E00F5F527 /* Health.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
-		AC360E6423EA1F9800F5F527 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AC360E6623EA2BE900F5F527 /* WarningMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessage.swift; sourceTree = "<group>"; };
 		AC6E805A23EB61F200A18264 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		AC9ADA9D23EC7018001E65E1 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -70,15 +66,6 @@
 				AC6E805A23EB61F200A18264 /* Weapon.swift */,
 			);
 			path = Weapon;
-			sourceTree = "<group>";
-		};
-		AC360E6B23EB1E6000F5F527 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				AC360E6423EA1F9800F5F527 /* Settings.swift */,
-				AC360E6223EA1F8E00F5F527 /* Health.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		AC360E6D23EB1E9200F5F527 /* Chest */ = {
@@ -115,7 +102,6 @@
 				ACEF58AA23EA09BD00FD375B /* Warriors */,
 				AC360E6923EB1DCC00F5F527 /* Weapon */,
 				AC360E6D23EB1E9200F5F527 /* Chest */,
-				AC360E6B23EB1E6000F5F527 /* Settings */,
 			);
 			path = P3OC;
 			sourceTree = "<group>";
@@ -205,13 +191,11 @@
 				ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */,
 				AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */,
 				AC9ADA9E23EC7018001E65E1 /* Chest.swift in Sources */,
-				AC360E6323EA1F8E00F5F527 /* Health.swift in Sources */,
 				ACD6223123E4BB4F004E723A /* Magus.swift in Sources */,
 				ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */,
 				ACD6222D23E4BB32004E723A /* GameManager.swift in Sources */,
 				ACD6223323E4BB65004E723A /* Player.swift in Sources */,
 				ACD6223923E4C0B9004E723A /* ActionType.swift in Sources */,
-				AC360E6523EA1F9800F5F527 /* Settings.swift in Sources */,
 				ACD6222423E4BAFF004E723A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

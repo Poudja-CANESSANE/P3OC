@@ -10,7 +10,7 @@ import Foundation
 
 class Archer: Warrior {
     
-    let archerWeapons: [Weapon] = [.dummyGun, .lightBow, .bow, .heavyBow, .bazooka]
+    private let archerWeapons: [Weapon] = [.dummyGun, .lightBow, .bow, .heavyBow, .bazooka]
     
     init(positionInTeam: Int, type: WarriorType, name: String, weapon: Weapon) {
         super.init(positionInTeam: positionInTeam, type: type, name: name, weapons: archerWeapons, weapon: .bow, magicPoints: 20)

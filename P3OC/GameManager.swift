@@ -15,7 +15,7 @@ class GameManager {
     
     let numberOfPlayer = 2
     private var players: [Player] = []  //Contains players of the game
-    var numberOfRound: Int = 0  //This is the number of round
+    private var numberOfRound: Int = 0  //This is the number of round
     private var isGameOver: Bool {
         players[0].isLooser || players[1].isLooser
     }
