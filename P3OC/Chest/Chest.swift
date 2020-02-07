@@ -14,7 +14,7 @@ class Chest {
 // MARK: - METHODS - INTERNAL
 //===========================
     
-    func loopMakeAppearChestWithRandomWeapon(chosenWarrior: Warrior, actualWeapon: Weapon) ->Weapon {
+    func loopMakeAppearChestWithRandomWeapon(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {
         var randomWeapon: Weapon = actualWeapon
         
         while randomWeapon == actualWeapon {

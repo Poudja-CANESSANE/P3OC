@@ -13,8 +13,8 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Properties
 //===================
     
-    let numberOfWarriorPerTeam = 3  //There are 3 warriors in each team
-    var numberOfWarriorType = WarriorType.allCases.count  //There are 3 types of warrior: magus, knight, archer
+    let numberOfWarriorPerTeam: Int = 3  //There are 3 warriors in each team
+    var numberOfWarriorType: Int = WarriorType.allCases.count  //There are 3 types of warrior: magus, knight, archer
 
     let id: Int  //To know which player is playing
     var warriors: [Warrior] = []  //Contains warriors of a team
@@ -186,11 +186,11 @@ class Player {  //There are 2 players and each player has 1 team
     private func createWarriorAccordingToType(type: WarriorType, positionInTeam: Int, warriorName: String) -> Warrior {  //Create a warrior according to the chosen type by the player
         switch type {
         case .magus:
-            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName, weapon: Weapon.stone)
+            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName)
         case .knight:
-            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName, weapon: Weapon.sword)
+            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName)
         case .archer:
-            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName, weapon: Weapon.bow)
+            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName)
         }
     }
     

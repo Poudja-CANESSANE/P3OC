@@ -13,7 +13,7 @@ class GameManager {
 // MARK: - Properties
 //===================
     
-    let numberOfPlayer = 2
+    let numberOfPlayer: Int = 2
     private var players: [Player] = []  //Contains players of the game
     private var numberOfRound: Int = 0  //This is the number of round
     private var isGameOver: Bool {
