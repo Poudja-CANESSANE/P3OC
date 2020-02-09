@@ -19,7 +19,7 @@ class Player {  //There are 2 players and each player has 1 team
     let id: Int  //To know which player is playing
     var warriors: [Warrior] = []  //Contains warriors of a team
     
-    var isLooser: Bool {
+    var isLooser: Bool {  //To know if the player is the looser (when all his warriors are dead)
         !warriors[0].isAlive && !warriors[1].isAlive && !warriors[2].isAlive
     }
     
@@ -39,7 +39,7 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Initialization Phase
 //=============================
     
-    func createWarriors(allPlayers: [Player]) {  //Create the player's team
+    func createWarriors(allPlayers: [Player]) {  //Create the player's team and describe it
         for warriorIndex in 1...numberOfWarriorPerTeam {
             let allWarriors = getAllWarriors(allPlayers: allPlayers)
             let allWarriorNames = getAllWarriorNames(allWarriors: allWarriors)
@@ -79,9 +79,9 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Ending Phase
 //=====================
 
-    func describeTeamEndGame() {
+    func describeTeamEndGame() {  //It prints the detailed description of all the player's warriors when the game is                               over
         for warrior in warriors {
-            print("\(warrior.positionInTeam).\(warrior.name) (type: \(warrior.type.description) \(warrior.type), health point 💚: \(warrior.hp), weapon: \(warrior.weapon.description), inflicted damage 🪓: \(warrior.weapon.damage), heal point 💊: \(warrior.magicPoints))")
+            printDetailedDescription(of: warrior)
         }
     }
     
@@ -93,7 +93,7 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Initialization phase
 //=============================
     
-    private func getAllWarriors(allPlayers: [Player]) -> [Warrior]  {  //Contains players' team
+    private func getAllWarriors(allPlayers: [Player]) -> [Warrior]  {  //Return an array containing all the warriors                                                                    of each player
         var warriors: [Warrior] = []
         
         for player in allPlayers {
@@ -103,12 +103,12 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func getAllWarriorNames(allWarriors: [Warrior]) -> [String] {  //Contains all warrior's names
+    private func getAllWarriorNames(allWarriors: [Warrior]) -> [String] {  //Return an array containing all warriors'                                                                       name
         allWarriors.map { $0.name }
     }
     
     
-    private func createWarrior(positionInTeam: Int, allWarriorNames: [String]) {  //Create 1 warrior with his position in the team
+    private func createWarrior(positionInTeam: Int, allWarriorNames: [String]) {  //Create 1 warrior with his position                                                                             in the team and a unique name
         let warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
         let warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
         let warrior = createWarriorAccordingToType(type: warriorType, positionInTeam: positionInTeam, warriorName: warriorName)
@@ -116,7 +116,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func askWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to player to choose his warrior's type
+    private func askWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to the player to choose his warrior's                                                                      type
         print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number."
             + "\n1.🎩 Magus (weapon: \(Weapon.stone.description), inflicted damage: \(Weapon.stone.damage), magic points: 30)"
             + "\n2.⚔️ Knight (weapon: \(Weapon.sword.description), inflicted damage: \(Weapon.sword.damage), magic points: 10)"
@@ -141,7 +141,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func loopAskWarriorType(positionInTeam: Int) -> WarriorType {  //Ask to choose his warrior's type while it is nil
+    private func loopAskWarriorType(positionInTeam: Int) -> WarriorType {  //Ask to choose his warrior's type while                                                                         warriorType is nil
         var warriorType: WarriorType?
         
         while warriorType == nil {
@@ -151,7 +151,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func askWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String? {   /* Ask to enter the name of the warrior at a particular position in the team */
+    private func askWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String? {   // Ask to enter the warrior's name at a particular position in the team
         print("\nPlayer \(id) please enter the name for your warrior 🏋️ N°\(positionInTeam).")
         guard let warriorName = readLine() else {
             printWarning(msg: "The input name of warrior 🏋️ N°\(positionInTeam) is invalid. It is nil. ")
@@ -173,7 +173,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
 
-    private func loopAskWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String {  //Ask the warrior's name while warriorName is nil
+    private func loopAskWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String {  //Ask the warrior's                                                                                    name while warriorName is nil
         var warriorName: String?
         
         while warriorName == nil {
@@ -183,7 +183,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func createWarriorAccordingToType(type: WarriorType, positionInTeam: Int, warriorName: String) -> Warrior {  //Create a warrior according to the chosen type by the player
+    private func createWarriorAccordingToType(type: WarriorType, positionInTeam: Int, warriorName: String) -> Warrior {  //Create a warrior according to the chosen type by the player and the warrior's name
         switch type {
         case .magus:
             return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName)
@@ -195,7 +195,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func describeTeam() {  //Describe the team of a player with the warrior's position in the team and the warrior's name
+    private func describeTeam() {  //Describe the team of a player with the warrior's position in the team, the                                     warrior's type and the warrior's name
         print("\n🎉 Here is the team of player \(id): 🎉")
         for warrior in warriors {
             warrior.describe()
@@ -210,7 +210,7 @@ class Player {  //There are 2 players and each player has 1 team
     private func askToChooseWarrior(from warriors: [Warrior], isChestCanAppear: Bool) -> Warrior? {  //Ask to the player to choose a warrior of his team
         var selectableNumbers: [Int] = []
         for warrior in warriors where warrior.isAlive {
-            print("\(warrior.positionInTeam).\(warrior.name) (type: \(warrior.type.description) \(warrior.type), health point 💚: \(warrior.hp), weapon: \(warrior.weapon.description), inflicted damage 🪓: \(warrior.weapon.damage), heal point 💊: \(warrior.magicPoints))")
+            printDetailedDescription(of: warrior)
             selectableNumbers.append(warrior.positionInTeam)
         }
         guard let chosenWarriorOptionalString = readLine() else {
@@ -233,6 +233,11 @@ class Player {  //There are 2 players and each player has 1 team
             chosenWarrior.weapon = maybeHaveChest(chosenWarrior: chosenWarrior, actualWeapon: chosenWarrior.weapon)
         }
         return chosenWarrior
+    }
+    
+    
+    private func printDetailedDescription(of warrior: Warrior) {  //It prints the detailed description of a warrior
+        print("\(warrior.positionInTeam).\(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp), weapon: \(warrior.weapon.description), inflicted damage 🪓: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
     }
     
     
@@ -307,7 +312,7 @@ class Player {  //There are 2 players and each player has 1 team
                 whoMagicPoints = target.maxHp - targetHp
             }
             target.hp += who.magicPoints
-            print("🤕  \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
+            print("🤕 \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
             return true
         }
     }
@@ -324,7 +329,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func maybeHaveChest(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {
+    private func maybeHaveChest(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {  //If the chosen warrior is lucky a chest containing a more or less powerful weapon appears
         let chanceArray: [Bool] = [true, false, false]
         let ramdomChanceIndex: Int = Int(arc4random_uniform(UInt32(chanceArray.count)))
         let chance: Bool = chanceArray[ramdomChanceIndex]

@@ -76,6 +76,15 @@
 			path = Chest;
 			sourceTree = "<group>";
 		};
+		AC711EF823F05F36004557FE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				ACD6223223E4BB65004E723A /* Player.swift */,
+				ACD6223823E4C0B9004E723A /* ActionType.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		ACD6221723E4BAFF004E723A = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +106,8 @@
 			children = (
 				ACD6222323E4BAFF004E723A /* main.swift */,
 				ACD6222C23E4BB32004E723A /* GameManager.swift */,
-				ACD6223223E4BB65004E723A /* Player.swift */,
 				AC360E6623EA2BE900F5F527 /* WarningMessage.swift */,
+				AC711EF823F05F36004557FE /* Player */,
 				ACEF58AA23EA09BD00FD375B /* Warriors */,
 				AC360E6923EB1DCC00F5F527 /* Weapon */,
 				AC360E6D23EB1E9200F5F527 /* Chest */,
@@ -109,9 +118,8 @@
 		ACEF58AA23EA09BD00FD375B /* Warriors */ = {
 			isa = PBXGroup;
 			children = (
-				ACD6223623E4BC7E004E723A /* WarriorType.swift */,
-				ACD6223823E4C0B9004E723A /* ActionType.swift */,
 				ACD6223423E4BB81004E723A /* Warrior.swift */,
+				ACD6223623E4BC7E004E723A /* WarriorType.swift */,
 				ACEF58AB23EA09CA00FD375B /* Children */,
 			);
 			path = Warriors;

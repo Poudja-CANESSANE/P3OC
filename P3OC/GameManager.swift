@@ -13,10 +13,10 @@ class GameManager {
 // MARK: - Properties
 //===================
     
-    let numberOfPlayer: Int = 2
+    let numberOfPlayer: Int = 2  //This is the number of player
     private var players: [Player] = []  //Contains players of the game
     private var numberOfRound: Int = 0  //This is the number of round
-    private var isGameOver: Bool {
+    private var isGameOver: Bool {  //To know if the game is over (when all the warriors of a team are dead)
         players[0].isLooser || players[1].isLooser
     }
     
@@ -39,14 +39,14 @@ class GameManager {
 // MARK: - Initialization Phase
 //=============================
     
-    private func createPlayers() {  //Initialization phase, create 2 players
+    private func createPlayers() {  //Create 2 players and fill players array with them
         for playerId in 1...numberOfPlayer {
             let player = Player(id: playerId)
             players.append(player)
         }
     }
     
-    private func startTeamCreationPhase() {  //Initialization phase, create a team for each players
+    private func startTeamCreationPhase() {  //Create a team for each player
         for player in players {
             player.createWarriors(allPlayers: players)
         }
@@ -56,7 +56,7 @@ class GameManager {
 // MARK: - Fighting Phase
 //=======================
     
-    private func startFightingPhase() {  //Fighting phase
+    private func startFightingPhase() {  //Each player can alternatively attack an opponent or heal a teammate while                                      the game is not over
         while !isGameOver {
             for player in players {
                 if !isGameOver {
@@ -68,7 +68,7 @@ class GameManager {
         }
     }
     
-    private func getOpponentPlayerFrom(currentPlayer: Player) -> Player? {
+    private func getOpponentPlayerFrom(currentPlayer: Player) -> Player? {  //To know which of the two players is the                                                                        opponent of the current player
         for player in players where player.id != currentPlayer.id  {
             return player
         }
@@ -79,7 +79,7 @@ class GameManager {
 // MARK: - Ending Phase
 //=====================
     
-    private func handleEndGame() {  //Ending phase: print winner, number of round, print players' team
+    private func handleEndGame() {  //Print the winner, the number of round, players' team and ask if the players want                               to restart the game
         print("\n                              *****END*****")
         if players[0].isLooser {
             print("\n🎉🥇 Player 2 is the WINNER !!! 🥇🎉")
@@ -100,13 +100,13 @@ class GameManager {
         }
     }
     
-    private func resetGame() {
+    private func resetGame() {  //Clear players array and reset numberOfRound to 0
         players.removeAll()
         numberOfRound = 0
     }
     
     
-    private func askToRestartGame() -> Bool? {
+    private func askToRestartGame() -> Bool? {  //Ask if the players want to play again
         print("\nDo you want to play again ?"
             + "\n1. YES"
             + "\n2. NO")
@@ -134,7 +134,7 @@ class GameManager {
     }
     
     
-    private func loopAskToRestartGame() -> Bool {
+    private func loopAskToRestartGame() -> Bool {  //Ask if the players want to play again while wantToRestart is nil
         var wantToRestart: Bool? = nil
         while wantToRestart == nil  {
             wantToRestart = askToRestartGame()

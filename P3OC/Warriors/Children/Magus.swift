@@ -10,7 +10,7 @@ import Foundation
 
 class Magus: Warrior {
     
-    private let magusWeapons: [Weapon] = [.dummyGun, .lightStone, .stone, .heavyStone, .bazooka]
+    private let magusWeapons: [Weapon] = [.dummyGun, .lightStone, .stone, .heavyStone, .bazooka]  //A warrior of type magus can only use these wepons
     
     init(positionInTeam: Int, type: WarriorType, name: String) {
         super.init(positionInTeam: positionInTeam, type: type, name: name, weapons: magusWeapons, weapon: .stone, magicPoints: 30)

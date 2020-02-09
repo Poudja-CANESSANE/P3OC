@@ -14,7 +14,7 @@ class Chest {
 // MARK: - METHODS - INTERNAL
 //===========================
     
-    func loopMakeAppearChestWithRandomWeapon(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {
+    func loopMakeAppearChestWithRandomWeapon(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {  //Return a random weapon from the weapons array of the chosen warrior while randomWeapon == actualWeapon
         var randomWeapon: Weapon = actualWeapon
         
         while randomWeapon == actualWeapon {
@@ -27,7 +27,7 @@ class Chest {
 // MARK: - METHODS - PRIVATE
 //==========================
     
-    private func makeAppearChestWithRamdomWeapon(chosenWarrior: Warrior) -> Weapon {
+    private func makeAppearChestWithRamdomWeapon(chosenWarrior: Warrior) -> Weapon {  //Return a random weapon from the weapons array of the chosen warrior
         let randomIndex: Int = Int(arc4random_uniform(UInt32(chosenWarrior.weapons.count)))
         let randomWeapon = chosenWarrior.weapons[randomIndex]
         return randomWeapon
