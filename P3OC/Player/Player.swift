@@ -312,7 +312,7 @@ class Player {  //There are 2 players and each player has 1 team
                 whoMagicPoints = target.maxHp - targetHp
             }
             target.hp += who.magicPoints
-            print("🤕 \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
+            print("🤕  \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
             return true
         }
     }
@@ -331,6 +331,7 @@ class Player {  //There are 2 players and each player has 1 team
     
     private func maybeHaveChest(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {  //If the chosen warrior is lucky a chest containing a more or less powerful weapon appears
         let chanceArray: [Bool] = [true, false, false]
+        print(chanceArray.count)
         let ramdomChanceIndex: Int = Int(arc4random_uniform(UInt32(chanceArray.count)))
         let chance: Bool = chanceArray[ramdomChanceIndex]
         switch chance {
