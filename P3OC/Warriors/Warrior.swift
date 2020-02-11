@@ -30,16 +30,15 @@ class Warrior {
     var weapon: Weapon  //This is the warrior's weapon
     var magicPoints: Int = 1  //This is how much the target's hp can be heal by the warrior
     var isAlive: Bool { hp > 0 }  //To know if the warrior is alive
-    let weapons: [Weapon]  //This array contains all the weapons that the warrior can use
+    var weapons: [Weapon] { [.dummyGun, .bazooka] }   //This array contains all the weapons that the warrior can use
 //============
 // MARK: - Inits
 //==============
     
-    init(positionInTeam: Int, type: WarriorType, name: String, weapons: [Weapon], weapon: Weapon, magicPoints: Int) {
+    init(positionInTeam: Int, type: WarriorType, name: String, weapon: Weapon, magicPoints: Int) {
         self.positionInTeam = positionInTeam
         self.type = type
         self.name = name
-        self.weapons = weapons
         self.weapon = weapon
         self.magicPoints = magicPoints
     }

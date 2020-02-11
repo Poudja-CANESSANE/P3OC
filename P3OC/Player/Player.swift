@@ -230,14 +230,14 @@ class Player {  //There are 2 players and each player has 1 team
         let chosenWarrior = warriors[chosenWarriorIndex - 1]
         print("\(chosenWarrior.type.description) \(chosenWarrior.name) is selected.")
         if isChestCanAppear == true {
-            chosenWarrior.weapon = maybeHaveChest(chosenWarrior: chosenWarrior, actualWeapon: chosenWarrior.weapon)
+            chosenWarrior.weapon = getWeaponAccordingToChance(chosenWarrior: chosenWarrior, actualWeapon: chosenWarrior.weapon)
         }
         return chosenWarrior
     }
     
     
     private func printDetailedDescription(of warrior: Warrior) {  //It prints the detailed description of a warrior
-        print("\(warrior.positionInTeam).\(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp), weapon: \(warrior.weapon.description), inflicted damage 🪓: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
+        print("\(warrior.positionInTeam). \(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp), weapon: \(warrior.weapon.description), inflicted damage 🪓: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
     }
     
     
@@ -293,7 +293,7 @@ class Player {  //There are 2 players and each player has 1 team
             whoWeaponDamage = targetHp
         }
         target.hp -= who.weapon.damage
-        print("😭  \(target.type.description) \(target.name) 🪓 (health point 💚: \(targetHp) - \(whoWeaponDamage) = \(target.hp)) 😭\n")
+        print("\n😭  \(target.type.description) \(target.name) 🪓 (health point 💚: \(targetHp) - \(whoWeaponDamage) = \(target.hp)) 😭\n")
         if !target.isAlive {
             print("☠️ \(target.type.description) \(target.name) is dead. ☠️\n")
         }
@@ -303,7 +303,6 @@ class Player {  //There are 2 players and each player has 1 team
     private func heal(who: Warrior, target: Warrior) -> Bool {  //Increase the hp of the target
         if target.hp == target.maxHp {
             printWarning(msg: "Cannot heal \(target.type.description) \(target.name). His life is full.")
-            print("\n")
             return false
         } else {
             let targetHp: Int = target.hp
@@ -312,7 +311,7 @@ class Player {  //There are 2 players and each player has 1 team
                 whoMagicPoints = target.maxHp - targetHp
             }
             target.hp += who.magicPoints
-            print("🤕  \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
+            print("\n🤕  \(target.type.description) \(target.name) 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
             return true
         }
     }
@@ -329,20 +328,22 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func maybeHaveChest(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {  //If the chosen warrior is lucky a chest containing a more or less powerful weapon appears
-        let chanceArray: [Bool] = [true, false, false]
-        print(chanceArray.count)
-        let ramdomChanceIndex: Int = Int(arc4random_uniform(UInt32(chanceArray.count)))
-        let chance: Bool = chanceArray[ramdomChanceIndex]
-        switch chance {
-        case true:
-            let chest = Chest()
-            let randomWeapon: Weapon = chest.loopMakeAppearChestWithRandomWeapon(chosenWarrior: chosenWarrior, actualWeapon: actualWeapon)
-            print("\n🎊🍀 \(chosenWarrior.type.description) \(chosenWarrior.name) is lucky ! A chest appeared at his feet. 🍀🎊"
-                + "\nThere is a \(randomWeapon.description) in it (damage: \(randomWeapon.damage))\n")
-            return randomWeapon
-        case false:
-            return actualWeapon
-        }
+    private func getWeaponAccordingToChance(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {  //If the chosen warrior is lucky a chest containing a more or less powerful weapon appears
+        let hasChestAppeared = Int.random(in: 1...3) == 1
+        
+        let weaponInChest: Weapon = hasChestAppeared ?
+            openChestAndGetWeapon(chosenWarrior: chosenWarrior, actualWeapon: actualWeapon) : actualWeapon
+    
+        return weaponInChest
+    }
+    
+    
+    private func openChestAndGetWeapon(chosenWarrior: Warrior, actualWeapon: Weapon) -> Weapon {
+        let chest = Chest()
+        let randomWeapon = chest.loopMakeAppearChestWithRandomWeapon(chosenWarrior: chosenWarrior, actualWeapon: actualWeapon)
+        print("\n🎊🍀 \(chosenWarrior.type.description) \(chosenWarrior.name) is lucky ! A chest appeared at his feet. 🍀🎊"
+            + "\nThere is a \(randomWeapon.description) in it (inflicted damage: \(randomWeapon.damage))\n")
+        
+        return randomWeapon
     }
 }

@@ -10,9 +10,12 @@ import Foundation
 
 class Knight: Warrior {
     
-    private let knightWeapons: [Weapon] = [.dummyGun, .lightSword, .sword, .heavySword, .bazooka]  //A warrior of type kinght can only use these wepons
+    override var weapons: [Weapon] {
+        let newWeapons: [Weapon] = [.lightSword, .sword, .heavySword]
+        return super.weapons + newWeapons
+    }  //A warrior of type kinght can only use these weapons
     
     init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weapons: knightWeapons, weapon: .sword, magicPoints: 10)
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weapon: .sword, magicPoints: 10)
     }
 }

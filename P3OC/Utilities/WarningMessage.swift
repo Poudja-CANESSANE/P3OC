@@ -9,5 +9,5 @@
 import Foundation
 
 func printWarning(msg: String) {
-    print("⚠️ \(msg) ⚠️")
+    print("\n⚠️ \(msg) ⚠️\n")
 }

@@ -28,7 +28,7 @@ class Chest {
 //==========================
     
     private func makeAppearChestWithRamdomWeapon(chosenWarrior: Warrior) -> Weapon {  //Return a random weapon from the weapons array of the chosen warrior
-        let randomIndex: Int = Int(arc4random_uniform(UInt32(chosenWarrior.weapons.count)))
+        let randomIndex = Int.random(in: 0..<chosenWarrior.weapons.count)
         let randomWeapon = chosenWarrior.weapons[randomIndex]
         return randomWeapon
     }

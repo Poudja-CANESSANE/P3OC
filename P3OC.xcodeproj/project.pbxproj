@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		AC360E6723EA2BE900F5F527 /* WarningMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC360E6623EA2BE900F5F527 /* WarningMessage.swift */; };
 		AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6E805A23EB61F200A18264 /* Weapon.swift */; };
+		AC813CD523F353220045E574 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC813CD423F353220045E574 /* Player.swift */; };
+		AC813CD723F353310045E574 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC813CD623F353310045E574 /* ActionType.swift */; };
 		AC9ADA9E23EC7018001E65E1 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9ADA9D23EC7018001E65E1 /* Chest.swift */; };
 		ACD6222423E4BAFF004E723A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222323E4BAFF004E723A /* main.swift */; };
 		ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222A23E4BB1A004E723A /* Archer.swift */; };
 		ACD6222D23E4BB32004E723A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222C23E4BB32004E723A /* GameManager.swift */; };
 		ACD6222F23E4BB41004E723A /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6222E23E4BB41004E723A /* Knight.swift */; };
 		ACD6223123E4BB4F004E723A /* Magus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223023E4BB4F004E723A /* Magus.swift */; };
-		ACD6223323E4BB65004E723A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223223E4BB65004E723A /* Player.swift */; };
 		ACD6223523E4BB81004E723A /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223423E4BB81004E723A /* Warrior.swift */; };
 		ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223623E4BC7E004E723A /* WarriorType.swift */; };
-		ACD6223923E4C0B9004E723A /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6223823E4C0B9004E723A /* ActionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +36,8 @@
 /* Begin PBXFileReference section */
 		AC360E6623EA2BE900F5F527 /* WarningMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessage.swift; sourceTree = "<group>"; };
 		AC6E805A23EB61F200A18264 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		AC813CD423F353220045E574 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		AC813CD623F353310045E574 /* ActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
 		AC9ADA9D23EC7018001E65E1 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
 		ACD6222023E4BAFF004E723A /* P3OC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = P3OC; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD6222323E4BAFF004E723A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -43,10 +45,8 @@
 		ACD6222C23E4BB32004E723A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		ACD6222E23E4BB41004E723A /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		ACD6223023E4BB4F004E723A /* Magus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magus.swift; sourceTree = "<group>"; };
-		ACD6223223E4BB65004E723A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		ACD6223423E4BB81004E723A /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		ACD6223623E4BC7E004E723A /* WarriorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarriorType.swift; sourceTree = "<group>"; };
-		ACD6223823E4C0B9004E723A /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +76,21 @@
 			path = Chest;
 			sourceTree = "<group>";
 		};
-		AC711EF823F05F36004557FE /* Player */ = {
+		AC813CD823F353370045E574 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				ACD6223223E4BB65004E723A /* Player.swift */,
-				ACD6223823E4C0B9004E723A /* ActionType.swift */,
+				AC813CD423F353220045E574 /* Player.swift */,
+				AC813CD623F353310045E574 /* ActionType.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		AC813CDE23F362720045E574 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AC360E6623EA2BE900F5F527 /* WarningMessage.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		ACD6221723E4BAFF004E723A = {
@@ -106,11 +114,11 @@
 			children = (
 				ACD6222323E4BAFF004E723A /* main.swift */,
 				ACD6222C23E4BB32004E723A /* GameManager.swift */,
-				AC360E6623EA2BE900F5F527 /* WarningMessage.swift */,
-				AC711EF823F05F36004557FE /* Player */,
+				AC813CD823F353370045E574 /* Player */,
 				ACEF58AA23EA09BD00FD375B /* Warriors */,
 				AC360E6923EB1DCC00F5F527 /* Weapon */,
 				AC360E6D23EB1E9200F5F527 /* Chest */,
+				AC813CDE23F362720045E574 /* Utilities */,
 			);
 			path = P3OC;
 			sourceTree = "<group>";
@@ -193,17 +201,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC813CD523F353220045E574 /* Player.swift in Sources */,
 				ACD6223523E4BB81004E723A /* Warrior.swift in Sources */,
 				ACD6222F23E4BB41004E723A /* Knight.swift in Sources */,
 				AC360E6723EA2BE900F5F527 /* WarningMessage.swift in Sources */,
 				ACD6222B23E4BB1A004E723A /* Archer.swift in Sources */,
 				AC6E805B23EB61F200A18264 /* Weapon.swift in Sources */,
 				AC9ADA9E23EC7018001E65E1 /* Chest.swift in Sources */,
+				AC813CD723F353310045E574 /* ActionType.swift in Sources */,
 				ACD6223123E4BB4F004E723A /* Magus.swift in Sources */,
 				ACD6223723E4BC7E004E723A /* WarriorType.swift in Sources */,
 				ACD6222D23E4BB32004E723A /* GameManager.swift in Sources */,
-				ACD6223323E4BB65004E723A /* Player.swift in Sources */,
-				ACD6223923E4C0B9004E723A /* ActionType.swift in Sources */,
 				ACD6222423E4BAFF004E723A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
