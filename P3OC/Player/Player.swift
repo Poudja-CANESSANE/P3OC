@@ -116,7 +116,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func loopAskWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to the player to choose his                                                                                warrior's type while warriorType is nil
+    private func loopAskWarriorType(positionInTeam: Int) -> WarriorType? {  //Ask to the player to choose his                                                                                warrior's type while the 3 guard                                                                               statement are not satisfied
         var warriorType: WarriorType?
         print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number."
             + "\n1.🎩 Magus (weapon 🪓: \(Weapon.stone.description), inflicted damage 💥: \(Weapon.stone.damage), magic points 💊: 30)"
@@ -145,7 +145,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
 
-    private func loopAskWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String? {  //Ask to enter the warrior's name at a particular position in the team while warriorName is nil
+    private func loopAskWarriorName(positionInTeam: Int, allWarriorNames: [String]) -> String? {  //Ask to enter the warrior's name at a particular position in the team while the 3 verifications are not satisfied
         var warriorName: String?
         print("\nPlayer \(id) please enter the name for your warrior 🏋️ N°\(positionInTeam).")
             
@@ -197,7 +197,7 @@ class Player {  //There are 2 players and each player has 1 team
 // MARK: - Fighting phase
 //=======================
     
-    private func loopAskToChooseWarrior(from warriors: [Warrior], canChestAppear: Bool) -> Warrior? {  //While chosenWarrior is nil it ask to the player to choose a warrior of his team and a chest can probabily appear if canChestAppear == true
+    private func loopAskToChooseWarrior(from warriors: [Warrior], canChestAppear: Bool) -> Warrior? {  //While the 3 guard statement are not satisfied it ask to the player to choose a warrior of his team and a chest can probabily appear if canChestAppear == true
         var chosenWarrior: Warrior?
         
         var selectableNumbers: [Int] = []
@@ -233,7 +233,7 @@ class Player {  //There are 2 players and each player has 1 team
     }
     
     
-    private func loopAskActionType() -> ActionType? {  //Ask the action type while actionType is nil
+    private func loopAskActionType() -> ActionType? {  //While the 3 guard statement are not satisfied it ask to the player the type of the action: attack or heal while actionType is nil
         var actionType: ActionType?
         
         print("\nPlayer \(id) please choose an action by entering a number."

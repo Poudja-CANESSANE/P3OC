@@ -10,10 +10,10 @@ import Foundation
 
 class Magus: Warrior {
     
-    override var weapons: [Weapon] {
+    override var weapons: [Weapon] {  //A warrior of type magus can only use these weapons
         let newWeapons: [Weapon] = [.lightStone, .stone, .heavyStone]
         return super.weapons + newWeapons
-    }  //A warrior of type magus can only use these weapons
+    }
     
     init(positionInTeam: Int, type: WarriorType, name: String) {
         super.init(positionInTeam: positionInTeam, type: type, name: name, weapon: .stone, magicPoints: 30)

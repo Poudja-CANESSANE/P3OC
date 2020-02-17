@@ -106,7 +106,7 @@ class GameManager {
     }
     
     
-    private func loopAskToRestartGame() -> Bool? {  //Ask if the players want to play again while wantToRestart is nil
+    private func loopAskToRestartGame() -> Bool? {  //Ask if the players want to play again while the 3 guard statement are not satisfied
         var wantToRestart: Bool?
         print("\nDo you want to play again ?"
             + "\n1. YES"
