@@ -93,7 +93,7 @@ class GameManager {
             player.describeTeamEndGame()
         }
         print("\n")
-        let wantToRestart = loopAskToRestartGame()
+        guard let wantToRestart = loopAskToRestartGame() else { return }
         if wantToRestart == true {
             resetGame()
             startGame()
@@ -106,39 +106,35 @@ class GameManager {
     }
     
     
-    private func askToRestartGame() -> Bool? {  //Ask if the players want to play again
+    private func loopAskToRestartGame() -> Bool? {  //Ask if the players want to play again while wantToRestart is nil
+        var wantToRestart: Bool?
         print("\nDo you want to play again ?"
             + "\n1. YES"
             + "\n2. NO")
         
         guard let restartOptionalString = readLine() else {
             printWarning(msg: "The input is invalid")
-            return nil
+            wantToRestart = loopAskToRestartGame()
+            return wantToRestart
         }
         
         guard let restartIndex = Int(restartOptionalString) else {
             printWarning(msg: "Please enter a number.")
-            return nil
+            wantToRestart = loopAskToRestartGame()
+            return wantToRestart
         }
         
         guard restartIndex == 1 || restartIndex == 2 else {
             printWarning(msg: "Make sure to enter 1 or 2.")
-            return nil
+            wantToRestart = loopAskToRestartGame()
+            return wantToRestart
         }
         
         switch restartIndex {
-        case 1: return true
-        case 2: return false
-        default: return false
+        case 1: wantToRestart = true
+        case 2: wantToRestart = false
+        default: wantToRestart = false
         }
-    }
-    
-    
-    private func loopAskToRestartGame() -> Bool {  //Ask if the players want to play again while wantToRestart is nil
-        var wantToRestart: Bool? = nil
-        while wantToRestart == nil  {
-            wantToRestart = askToRestartGame()
-        }
-        return wantToRestart!
+        return wantToRestart
     }
 }

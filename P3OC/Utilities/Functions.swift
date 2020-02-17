@@ -12,10 +12,18 @@ func printWarning(msg: String) {  //Encompass the message with caution signs
     print("\n⚠️ \(msg) ⚠️\n")
 }
 
-func printDetailedDescription(of warrior: Warrior) {  //It prints the detailed description of a warrior
+func printDetailedDescription(of warrior: Warrior?) {  //It prints the detailed description of a warrior
+    guard let warrior = warrior else {
+        printWarning(msg: "warrior is nil")
+        return
+    }
     print("\(warrior.positionInTeam). \(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp), weapon 🪓: \(warrior.weapon.description), inflicted damage 💥: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
 }
 
-func printWarrior(_ warrior: Warrior) -> String {  //Print the emoji of the warrior's type and his name
+func printWarrior(_ warrior: Warrior?) -> String {  //Print the emoji of the warrior's type and his name
+    guard let warrior = warrior else {
+        printWarning(msg: "warrior is nil")
+        return "\n"
+    }
     return "\(warrior.type.description) \(warrior.name)"
 }
