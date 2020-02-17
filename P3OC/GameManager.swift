@@ -60,7 +60,7 @@ class GameManager {
         while !isGameOver {
             for player in players {
                 if !isGameOver {
-                    guard let opponentPlayer = getOpponentPlayerFrom(currentPlayer: player) else { return }
+                    let opponentPlayer = getOpponentPlayerFrom(currentPlayer: player)
                     player.fight(opponent: opponentPlayer)
                     numberOfRound += 1
                 }
@@ -68,11 +68,13 @@ class GameManager {
         }
     }
     
-    private func getOpponentPlayerFrom(currentPlayer: Player) -> Player? {  //To know which of the two players is the                                                                        opponent of the current player
-        for player in players where player.id != currentPlayer.id  {
-            return player
+    private func getOpponentPlayerFrom(currentPlayer: Player) -> Player {  //To know which of the two players is the                                                                        opponent of the current player
+        switch currentPlayer.id {
+        case 1: return players[1]
+        case 2: return players[0]
+        default: printWarning(msg: "ERROR ! Cannot get the opponent player from the current player.")
+                 return currentPlayer
         }
-        return nil
     }
     
 //=====================
@@ -93,8 +95,7 @@ class GameManager {
             player.describeTeamEndGame()
         }
         print("\n")
-        guard let wantToRestart = loopAskToRestartGame() else { return }
-        if wantToRestart == true {
+        if loopAskToRestartGame() {
             resetGame()
             startGame()
         }
@@ -106,35 +107,30 @@ class GameManager {
     }
     
     
-    private func loopAskToRestartGame() -> Bool? {  //Ask if the players want to play again while the 3 guard statement are not satisfied
-        var wantToRestart: Bool?
+    private func loopAskToRestartGame() -> Bool {  //Ask if the players want to play again while the 3 guard statement are not satisfied
         print("\nDo you want to play again ?"
             + "\n1. YES"
             + "\n2. NO")
         
         guard let restartOptionalString = readLine() else {
             printWarning(msg: "The input is invalid")
-            wantToRestart = loopAskToRestartGame()
-            return wantToRestart
+            return loopAskToRestartGame()
         }
         
         guard let restartIndex = Int(restartOptionalString) else {
             printWarning(msg: "Please enter a number.")
-            wantToRestart = loopAskToRestartGame()
-            return wantToRestart
+            return loopAskToRestartGame()
         }
         
-        guard restartIndex == 1 || restartIndex == 2 else {
+        guard 1...2 ~= restartIndex else {
             printWarning(msg: "Make sure to enter 1 or 2.")
-            wantToRestart = loopAskToRestartGame()
-            return wantToRestart
+            return loopAskToRestartGame()
         }
         
         switch restartIndex {
-        case 1: wantToRestart = true
-        case 2: wantToRestart = false
-        default: wantToRestart = false
+        case 1: return true
+        case 2: return false
+        default: return false
         }
-        return wantToRestart
     }
 }
