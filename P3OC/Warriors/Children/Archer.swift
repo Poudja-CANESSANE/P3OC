@@ -9,13 +9,22 @@
 import Foundation
 
 class Archer: Warrior {
+        
+// MARK: - INTERNAL
     
-    override var weapons: [Weapon] {  //A warrior of type archer can only use these weapons
+// MARK: - Properties
+    
+    ///A warrior of type archer can only use these weapons
+    override var weapons: [Weapon] {
         let newWeapons: [Weapon] = [.lightBow, .bow, .heavyBow]
         return super.weapons + newWeapons
     }
     
+    override var maxHp: Int { 70 }
+    
+// MARK: - Inits
+    
     init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weapon: .bow, magicPoints: 20)
+        super.init(positionInTeam: positionInTeam, type: type, name: name, weapon: .bow, magicPoints: 20, hp: 70)
     }
 }

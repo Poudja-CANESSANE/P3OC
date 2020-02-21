@@ -13,17 +13,17 @@ enum Weapon {
     
     var damage: Int {
         switch self {
-        case .dummyGun: return 1
-        case .lightStone: return 5
-        case .stone: return 10
-        case .heavyStone: return 15
-        case .lightSword: return 25
-        case .sword: return 30
-        case .heavySword: return 35
-        case .lightBow: return 15
-        case .bow: return 20
-        case .heavyBow: return 25
-        case .bazooka: return 50
+        case .dummyGun: return 10
+        case .lightStone: return 20
+        case .stone: return 30
+        case .heavyStone: return 40
+        case .lightSword: return 50
+        case .sword: return 60
+        case .heavySword: return 70
+        case .lightBow: return 30
+        case .bow: return 40
+        case .heavyBow: return 50
+        case .bazooka: return 100
         }
     }
     

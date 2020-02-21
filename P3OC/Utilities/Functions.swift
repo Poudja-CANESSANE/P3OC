@@ -8,14 +8,17 @@
 
 import Foundation
 
-func printWarning(msg: String) {  //Encompass the message with caution signs
+///Encompass the message with caution signs
+func printWarning(msg: String) {
     print("\n⚠️ \(msg) ⚠️\n")
 }
 
-func printDetailedDescription(of warrior: Warrior) {  //It prints the detailed description of a warrior
-    print("\(warrior.positionInTeam). \(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp), weapon 🪓: \(warrior.weapon.description), inflicted damage 💥: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
+///It prints the detailed description of a warrior
+func printDetailedDescription(of warrior: Warrior) {
+    print("\(warrior.positionInTeam). \(warrior.name) (type: \(warrior.type.description) \(warrior.type), health points 💚: \(warrior.hp)/\(warrior.maxHp), weapon 🪓: \(warrior.weapon.description), inflicted damage 💥: \(warrior.weapon.damage), magic points 💊: \(warrior.magicPoints))")
 }
 
-func printWarrior(_ warrior: Warrior) -> String {  //Print the emoji of the warrior's type and his name
+///Print the emoji of the warrior's type and his name
+func printWarrior(_ warrior: Warrior) -> String {
     return "\(warrior.type.description) \(warrior.name)"
 }
