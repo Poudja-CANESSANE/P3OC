@@ -46,7 +46,7 @@ class GameManager {
     
 // MARK: - Initialization Phase
     
-     ///Create 2 players and fill players array with them
+    ///Create 2 players and fill players array with them
     private func createPlayers() {
         for playerId in 1...numberOfPlayer {
             let player = Player(id: playerId)

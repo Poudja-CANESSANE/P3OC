@@ -109,7 +109,7 @@ class Player {
         allWarriors.map { $0.name }
     }
     
-    ///Create 1 warrior with his positin in the team, his type and a unique name and fill the array warriors with him
+    ///Create 1 warrior with his position in the team, his type and a unique name and fill the array warriors with him
     private func createWarrior(positionInTeam: Int, allWarriorNames: [String]) {
         let warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
         let warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)

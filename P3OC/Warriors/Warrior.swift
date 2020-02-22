@@ -29,7 +29,7 @@ class Warrior {
     ///This is how much the target's hp can be heal by the warrior
     var magicPoints: Int
     
-     ///This is the warrior's life and it is between 0 and maxHp
+    ///This is the warrior's life and it is between 0 and maxHp
     var hp: Int {
         didSet {
             if hp > maxHp {
@@ -43,7 +43,7 @@ class Warrior {
     ///The warrior's life cannot exceed maxHp
     var maxHp: Int { 100 }
     
-     ///To know if the warrior is alive
+    ///To know if the warrior is alive
     var isAlive: Bool { hp > 0 }
     
     ///This array contains all the weapons that the warrior can use
