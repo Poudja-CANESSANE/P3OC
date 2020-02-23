@@ -16,12 +16,10 @@ class Magus: Warrior {
     
     ///A warrior of type magus can only use these weapons
     override var weapons: [Weapon] {
-        let newWeapons: [Weapon] = [.lightStone, .stone, .heavyStone]
-        return super.weapons + newWeapons
+        let usableWeapons: [Weapon] = [.lightStone, .stone, .heavyStone]
+        return super.weapons + usableWeapons
     }
     
-    override var maxHp: Int { 100 }
-
 // MARK: - Inits
     
     init(positionInTeam: Int, type: WarriorType, name: String) {

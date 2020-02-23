@@ -23,7 +23,7 @@ class Warrior {
     ///This is the warrior's name
     let name: String
     
-     ///This is the warrior's weapon
+    ///This is the warrior's weapon
     var weapon: Weapon
     
     ///This is how much the target's hp can be heal by the warrior

@@ -14,12 +14,13 @@ class Knight: Warrior {
     
 // MARK: - Properties
     
-    ///A warrior of type kinght can only use these weapons
+    ///A warrior of type knight can only use these weapons
     override var weapons: [Weapon] {
-        let newWeapons: [Weapon] = [.lightSword, .sword, .heavySword]
-        return super.weapons + newWeapons
+        let usableWeapons: [Weapon] = [.lightSword, .sword, .heavySword]
+        return super.weapons + usableWeapons
     }
     
+    ///A warrior of type knight cannot exceed 50
     override var maxHp: Int { 50 }
 
 // MARK: - Inits

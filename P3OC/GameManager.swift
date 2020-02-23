@@ -34,7 +34,7 @@ class GameManager {
     ///Contains players of the game
     private var players: [Player] = []
     
-     ///This is the number of round
+    ///This is the number of round
     private var numberOfRound: Int = 0
     
     ///To know if the game is over (when all the warriors of a team are dead)

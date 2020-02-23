@@ -121,9 +121,9 @@ class Player {
     private func loopAskWarriorType(positionInTeam: Int) -> WarriorType {
         var warriorType: WarriorType
         print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number."
-            + "\n1.🎩 Magus (health points: 100, weapon 🪓: \(Weapon.stone.description), inflicted damage 💥: \(Weapon.stone.damage), magic points 💊: 30)"
-            + "\n2.⚔️ Knight (health points: 50, weapon 🪓: \(Weapon.sword.description), inflicted damage 💥: \(Weapon.sword.damage), magic points 💊: 10)"
-            + "\n3.🏹 Archer (health points: 70, weapon 🪓: \(Weapon.bow.description), inflicted damage 💥: \(Weapon.bow.damage), magic points 💊: 20)")
+            + "\n1.🎩 Magus (health points 💚: 100, weapon 🪓: \(Weapon.stone.description), inflicted damage 💥: \(Weapon.stone.damage), magic points 💊: 30)"
+            + "\n2.⚔️ Knight (health points 💚: 50, weapon 🪓: \(Weapon.sword.description), inflicted damage 💥: \(Weapon.sword.damage), magic points 💊: 10)"
+            + "\n3.🏹 Archer (health points 💚: 70, weapon 🪓: \(Weapon.bow.description), inflicted damage 💥: \(Weapon.bow.damage), magic points 💊: 20)")
         
         guard let warriorTypeOptionalString = readLine() else {
             printWarning(msg: "Please input a number.")
@@ -201,8 +201,8 @@ class Player {
     ///While the 3 guard statement are not satisfied it ask to the player to choose a warrior of his team and a chest can probabily appear if canChestAppear == true
     private func loopAskToChooseWarrior(from warriors: [Warrior], canChestAppear: Bool) -> Warrior {
         var chosenWarrior: Warrior
-        
         var selectableNumbers = [Int]()
+        
         for warrior in warriors where warrior.isAlive {
             printDetailedDescription(of: warrior)
             selectableNumbers.append(warrior.positionInTeam)

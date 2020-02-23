@@ -16,10 +16,11 @@ class Archer: Warrior {
     
     ///A warrior of type archer can only use these weapons
     override var weapons: [Weapon] {
-        let newWeapons: [Weapon] = [.lightBow, .bow, .heavyBow]
-        return super.weapons + newWeapons
+        let usableWeapons: [Weapon] = [.lightBow, .bow, .heavyBow]
+        return super.weapons + usableWeapons
     }
     
+    ///A warrior of type archer cannot exceed 70
     override var maxHp: Int { 70 }
     
 // MARK: - Inits
