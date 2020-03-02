@@ -12,7 +12,7 @@ class Player {
     
 // MARK: - INTERNAL
     
-// MARK: - Properties
+// MARK: Properties
 
     ///To know which player is playing
     let id: Int
@@ -22,15 +22,15 @@ class Player {
         !warriors[0].isAlive && !warriors[1].isAlive && !warriors[2].isAlive
     }
     
-// MARK: - Inits
+// MARK: Inits
     
     init(id: Int) {
         self.id = id
     }
     
-// MARK: - Methods
+// MARK:  Methods
     
-// MARK: - Initialization Phase
+// MARK: Initialization Phase
     
     ///Create the player's team and describe it
     func createWarriors(allPlayers: [Player]) {
@@ -43,7 +43,7 @@ class Player {
     }
     
 
-// MARK: - Fighting Phase
+// MARK: Fighting Phase
     
     ///Ask which warrior will attack an enemy or heal a teammate
     func fight(opponent: Player) {
@@ -51,7 +51,7 @@ class Player {
         
         while isActionDone == false {
             print("\nPlayer \(id) please choose the warrior 🏋️ who will attack 🪓 an ennemy 👿 or heal 💊 a teammate 😎 by entering a number.")
-            let who = loopAskToChooseWarrior(from: warriors, canChestAppear: true )
+            let chosenWarrior = loopAskToChooseWarrior(from: warriors, canChestAppear: true )
             let actionType = loopAskActionType()
             let target: Warrior
             
@@ -64,11 +64,11 @@ class Player {
                 target = loopAskToChooseWarrior(from: warriors, canChestAppear: false)
             }
             
-            isActionDone = action(type: actionType, who: who, target: target)
+            isActionDone = action(type: actionType, chosenWarrior: chosenWarrior, target: target)
         }
     }
 
-// MARK: - Ending Phase
+// MARK: Ending Phase
     
     ///It prints the detailed description of all the player's warriors when the game is over
     func describeTeamEndGame() {
@@ -79,7 +79,7 @@ class Player {
     
 // MARK: - PRIVATE
     
-// MARK: - Properties
+// MARK: Properties
     
     ///There are 3 warriors in each team
     private let numberOfWarriorPerTeam: Int = 3
@@ -90,9 +90,9 @@ class Player {
     ///Contains warriors of a team
     private var warriors: [Warrior] = []
     
-// MARK: - Methods
+// MARK: Methods
     
-// MARK: - Initialization phase
+// MARK: Initialization phase
     
     ///Return an array containing all the warriors of each player
     private func getAllWarriors(allPlayers: [Player]) -> [Warrior]  {
@@ -120,30 +120,34 @@ class Player {
     ///Ask to the player to choose his warrior's type while the 3 guard statements are not satisfied
     private func loopAskWarriorType(positionInTeam: Int) -> WarriorType {
         var warriorType: WarriorType
-        print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number."
-            + "\n1.🎩 Magus (health points 💚: 100, weapon 🪓: \(Weapon.stone.description), inflicted damage 💥: \(Weapon.stone.damage), magic points 💊: 30)"
-            + "\n2.⚔️ Knight (health points 💚: 50, weapon 🪓: \(Weapon.sword.description), inflicted damage 💥: \(Weapon.sword.damage), magic points 💊: 10)"
-            + "\n3.🏹 Archer (health points 💚: 70, weapon 🪓: \(Weapon.bow.description), inflicted damage 💥: \(Weapon.bow.damage), magic points 💊: 20)")
+        
+        print("\nPlayer \(id) please choose the type of your warrior 🏋️ N°\(positionInTeam) by entering a number.")
+        for (index, warriorType) in WarriorType.allCases.enumerated() {
+            printWarriorTypeDescription(type: warriorType, id: index + 1)
+        }
         
         guard let warriorTypeOptionalString = readLine() else {
             printWarning(msg: "Please input a number.")
-            warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
-            return warriorType
+            return loopAskWarriorType(positionInTeam: positionInTeam)
         }
         
         guard let warriorTypeIndex = Int(warriorTypeOptionalString) else {
             printWarning(msg: "The input is invalid. Make sure to enter a number between 1 and \(numberOfWarriorType).")
-            warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
-            return warriorType
+            return loopAskWarriorType(positionInTeam: positionInTeam)
         }
         
         guard  1...numberOfWarriorType ~= warriorTypeIndex else {
             printWarning(msg: "Please input a valid number between 1 and \(numberOfWarriorType).")
-            warriorType = loopAskWarriorType(positionInTeam: positionInTeam)
-            return warriorType
+            return loopAskWarriorType(positionInTeam: positionInTeam)
         }
         warriorType = WarriorType.allCases[warriorTypeIndex - 1]
         return warriorType
+    }
+    
+    ///Print all properties of a type of warrior
+    private func printWarriorTypeDescription(type: WarriorType, id: Int) {
+        
+        print("\(id). \(type.extendedDescription) (health points 💚: \(type.maxHp), weapon 🪓: \(type.weapon.description), inflicted damage 💥: \(type.weapon.damage), magic points 💊: \(type.magicPoints))")
     }
     
     ///Ask to enter the warrior's name at a particular position in the team while the 3 verifications are not satisfied
@@ -153,21 +157,18 @@ class Player {
             
         guard let warriorNameOptionalString = readLine() else {
             printWarning(msg: "The input name of warrior 🏋️ N°\(positionInTeam) is invalid. It is nil. ")
-            warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
-            return warriorName
+            return loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
         }
         
         guard warriorNameOptionalString != "" else {
             printWarning(msg: "The name of warrior 🏋️ N°\(positionInTeam) is empty.")
-            warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
-            return warriorName
+            return loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
         }
     
         for name in allWarriorNames {
             if name.lowercased() == warriorNameOptionalString.lowercased() {
                 printWarning(msg: "This name was already used. Pay attention to uppercase and lowercase.")
-                warriorName = loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
-                return warriorName
+                return loopAskWarriorName(positionInTeam: positionInTeam, allWarriorNames: allWarriorNames)
             }
         }
         warriorName = warriorNameOptionalString
@@ -196,7 +197,7 @@ class Player {
     }
     
 
-// MARK: - Fighting phase
+// MARK: Fighting phase
     
     ///While the 3 guard statement are not satisfied it ask to the player to choose a warrior of his team and a chest can probabily appear if canChestAppear == true
     private func loopAskToChooseWarrior(from warriors: [Warrior], canChestAppear: Bool) -> Warrior {
@@ -209,20 +210,17 @@ class Player {
         }
         guard let chosenWarriorOptionalString = readLine() else {
             printWarning(msg: "The input is invalid. Please enter a number.")
-            chosenWarrior = loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
-            return chosenWarrior
+            return loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
         }
         
         guard let chosenWarriorIndex = Int(chosenWarriorOptionalString) else {
             printWarning(msg: "Please enter a number.")
-            chosenWarrior = loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
-            return chosenWarrior
+            return loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
         }
         
         guard selectableNumbers.contains(chosenWarriorIndex) else {
             printWarning(msg: "Make sure to enter one of these numbers \(selectableNumbers).")
-            chosenWarrior = loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
-            return chosenWarrior
+            return loopAskToChooseWarrior(from: warriors, canChestAppear: canChestAppear)
         }
         chosenWarrior = warriors[chosenWarriorIndex - 1]
         print("\(printWarrior(chosenWarrior))" + " is selected.")
@@ -243,20 +241,17 @@ class Player {
         
         guard let actionTypeOptionalString = readLine() else {
             printWarning(msg: "The input is invalid. Make sure to enter 1 or 2.")
-            actionType = loopAskActionType()
-            return actionType
+            return loopAskActionType()
         }
         
         guard let actionTypeIndex = Int(actionTypeOptionalString) else {
             printWarning(msg: " Please enter a number.")
-            actionType = loopAskActionType()
-            return actionType
+            return loopAskActionType()
         }
         
         guard 1...2 ~= actionTypeIndex else {
             printWarning(msg: "Please enter 1 or 2.")
-            actionType = loopAskActionType()
-            return actionType
+            return loopAskActionType()
         }
         
         actionType = ActionType.allCases[actionTypeIndex - 1]
@@ -264,15 +259,15 @@ class Player {
     }
     
     ///Reduce the hp of the target
-    private func attack(who: Warrior, target: Warrior) {
+    private func attack(chosenWarrior: Warrior, target: Warrior) {
         let targetHp = target.hp
-        var whoWeaponDamage = who.weapon.damage
-        if targetHp < whoWeaponDamage {
-            whoWeaponDamage = targetHp
+        var chosenWarriorWeaponDamage = chosenWarrior.weapon.damage
+        if targetHp < chosenWarriorWeaponDamage {
+            chosenWarriorWeaponDamage = targetHp
         }
         
-        target.hp -= who.weapon.damage
-        print("\n😭  " + "\(printWarrior(target))" + " 🪓 (health point 💚: \(targetHp) - \(whoWeaponDamage) = \(target.hp)) 😭\n")
+        target.hp -= chosenWarrior.weapon.damage
+        print("\n😭  " + "\(printWarrior(target))" + " 🪓 (health point 💚: \(targetHp) - \(chosenWarriorWeaponDamage) = \(target.hp)) 😭\n")
         
         if !target.isAlive {
             print("☠️  " + "\(printWarrior(target))" + " is dead. ☠️\n")
@@ -280,31 +275,31 @@ class Player {
     }
     
     ///Increase the hp of the target
-    private func heal(who: Warrior, target: Warrior) -> Bool {
+    private func heal(chosenWarrior: Warrior, target: Warrior) -> Bool {
         if target.hp == target.maxHp {
             printWarning(msg: "Cannot heal " + "\(printWarrior(target))" + " . His life is full.")
             return false
         } else {
             let targetHp = target.hp
-            var whoMagicPoints = who.magicPoints
-            if targetHp + whoMagicPoints > target.maxHp {
-                whoMagicPoints = target.maxHp - targetHp
+            var chosenWarriorMagicPoints = chosenWarrior.magicPoints
+            if targetHp + chosenWarriorMagicPoints > target.maxHp {
+                chosenWarriorMagicPoints = target.maxHp - targetHp
             }
             
-            target.hp += who.magicPoints
-            print("\n🤕  " + "\(printWarrior(target))" + " 💊 (health point 💚: \(targetHp) + \(whoMagicPoints) = \(target.hp)) 🤕\n")
+            target.hp += chosenWarrior.magicPoints
+            print("\n🤕  " + "\(printWarrior(target))" + " 💊 (health point 💚: \(targetHp) + \(chosenWarriorMagicPoints) = \(target.hp)) 🤕\n")
             return true
         }
     }
     
     ///The chosen warrior attack an enemy or heal a teammate
-    private func action(type: ActionType, who: Warrior, target: Warrior) -> Bool {
+    private func action(type: ActionType, chosenWarrior: Warrior, target: Warrior) -> Bool {
         switch type {
         case .attack:
-            attack(who: who, target: target)
+            attack(chosenWarrior: chosenWarrior, target: target)
             return true
         case .heal:
-            return heal(who: who, target: target)
+            return heal(chosenWarrior: chosenWarrior, target: target)
         }
     }
     

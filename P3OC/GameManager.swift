@@ -12,11 +12,11 @@ class GameManager {
 
 // MARK: - INTERNAL
     
-// MARK: - Methods
+// MARK: Methods
     
     ///Manage each phase of the game
     func startGame() {
-        print("\n                    ***** Welcome to BATTLE OF WARRIORS ! *****"
+        print("\n                    ***** 🙏 Welcome to BATTLE OF WARRIORS ! 🙏 *****"
             + "\nYou will create 3 warriors. And then you can select one who will attack an enemy or heal a teammate.")
         createPlayers()
         startTeamCreationPhase()
@@ -26,7 +26,7 @@ class GameManager {
     
 // MARK: - PRIVATE
     
-// MARK: - Properties
+// MARK: Properties
     
     ///This is the number of player
     private let numberOfPlayer: Int = 2
@@ -42,9 +42,9 @@ class GameManager {
         players[0].isLooser || players[1].isLooser
     }
     
-// MARK: - Methods
+// MARK: Methods
     
-// MARK: - Initialization Phase
+// MARK: Initialization Phase
     
     ///Create 2 players and fill players array with them
     private func createPlayers() {
@@ -61,10 +61,11 @@ class GameManager {
         }
     }
     
-// MARK: - Fighting Phase
+// MARK: Fighting Phase
     
     ///Each player can alternatively attack an opponent or heal a teammate while the game is not over
     private func startFightingPhase() {
+        print("\n                         ***** 💥 Let's fight ! 💥 *****")
         while !isGameOver {
             for player in players where !isGameOver {
                     let opponentPlayer = getOpponentPlayerFrom(currentPlayer: player)
@@ -84,17 +85,17 @@ class GameManager {
         }
     }
     
-// MARK: - Ending Phase
+// MARK: Ending Phase
     
     ///Print the winner, the number of round, players' team and ask if the players want to restart the game
     private func handleEndGame() {
-        print("\n                              *****END*****")
+        print("\n                              ***** END *****")
         if players[0].isLooser {
             print("\n🎉🥇 Player 2 is the WINNER !!! 🥇🎉")
         } else if players[1].isLooser {
             print("\n🎉🥇 Player 1 is the WINNER !!! 🥇🎉")
         }
-        print("\n                           *****STATISTICS*****")
+        print("\n                           ***** STATISTICS *****")
         print("\nNumber of round: \(numberOfRound)")
         for player in players {
             print("\nHere is the team of player \(player.id):")

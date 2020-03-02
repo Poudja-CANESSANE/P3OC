@@ -10,9 +10,12 @@ import Foundation
 
 class Warrior {
     
+    class var maxHp: Int { 0 }
+    class var magicPoints: Int { 0 }
+    
 // MARK: - INTERNAL
     
-// MARK: - Properties
+// MARK: Properties
 
     ///To know which warrior is selected
     let positionInTeam: Int
@@ -41,7 +44,7 @@ class Warrior {
     }
     
     ///The warrior's life cannot exceed maxHp
-    var maxHp: Int { 100 }
+    let maxHp: Int
     
     ///To know if the warrior is alive
     var isAlive: Bool { hp > 0 }
@@ -49,18 +52,19 @@ class Warrior {
     ///This array contains all the weapons that the warrior can use
     var weapons: [Weapon] { [.dummyGun, .bazooka] }
 
-// MARK: - Inits
+// MARK: Inits
     
-    init(positionInTeam: Int, type: WarriorType, name: String, weapon: Weapon, magicPoints: Int, hp: Int) {
+    init(positionInTeam: Int, type: WarriorType, name: String, weapon: Weapon, magicPoints: Int, maxHp: Int) {
         self.positionInTeam = positionInTeam
         self.type = type
         self.name = name
         self.weapon = weapon
         self.magicPoints = magicPoints
-        self.hp = hp
+        self.maxHp = maxHp
+        self.hp = maxHp
     }
 
-// MARK: - Methods
+// MARK: Methods
     
     ///Describe the warrior with his position in the team, his type and his name
     func describe() {
