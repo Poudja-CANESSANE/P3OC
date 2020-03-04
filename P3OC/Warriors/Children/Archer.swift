@@ -25,7 +25,7 @@ class Archer: Warrior {
     
 // MARK: Inits
     
-    init(positionInTeam: Int, type: WarriorType, name: String) {
-        super.init(positionInTeam: positionInTeam, type: type, name: name, weapon: .bow, magicPoints: Archer.magicPoints, maxHp: Archer.maxHp)
+    init(positionInTeam: Int, name: String) {
+        super.init(positionInTeam: positionInTeam, type: .archer, name: name, weapon: .bow, magicPoints: Archer.magicPoints, maxHp: Archer.maxHp)
     }
 }

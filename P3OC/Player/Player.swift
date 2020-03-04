@@ -179,11 +179,11 @@ class Player {
     private func createWarriorAccordingToType(type: WarriorType, positionInTeam: Int, warriorName: String) -> Warrior {
         switch type {
         case .magus:
-            return Magus(positionInTeam: positionInTeam, type: .magus, name: warriorName)
+            return Magus(positionInTeam: positionInTeam, name: warriorName)
         case .knight:
-            return Knight(positionInTeam: positionInTeam, type: .knight, name: warriorName)
+            return Knight(positionInTeam: positionInTeam, name: warriorName)
         case .archer:
-            return Archer(positionInTeam: positionInTeam, type: .archer, name: warriorName)
+            return Archer(positionInTeam: positionInTeam, name: warriorName)
         }
     }
     
