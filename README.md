@@ -8,7 +8,7 @@ The 2 players build a team of 3 warriors with a specific type (magus, knight, ar
 ![](githubReadme1.png)
 
 ## Fighting Phase
-Each player choose a warrior an action type: attack or heal.
+Each player choose a warrior and an action type: attack or heal.
 
 ### Chest
 Chests containing a weapon more or less powerful than the one already in possession may appear to a warrior when it is his turn if he has chance.
